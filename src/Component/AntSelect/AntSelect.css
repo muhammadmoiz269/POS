@@ -1,0 +1,13 @@
+.Searchbr > div {
+  width: 300px;
+  background: #f1f1f1;
+  border-radius: 10px !important;
+}
+
+@media only screen and (max-device-width: 820px) {
+  .Searchbr > div {
+    width: 300px;
+    background: #f1f1f1;
+    border-radius: 10px !important;
+  }
+}

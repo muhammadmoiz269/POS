@@ -1,0 +1,36 @@
+.ant-popover-inner-content {
+  padding: 0 0;
+}
+
+.UpperSection {
+  padding-top: 1rem;
+  padding-bottom: 0.2rem;
+  height: 32%;
+  background: #004d8b;
+}
+.LowerSection {
+  height: 70%;
+  background: #ffff;
+}
+.ProfileBox {
+  height: 260px;
+  width: 210px;
+  position: absolute;
+  top: -11px;
+  right: -23px;
+}
+.PopOver {
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+}
+@media only screen and (max-device-width: 1024px) {
+  .antcard {
+    padding: 0.2rem 1rem;
+    margin-top: 1rem;
+  }
+}
+@media only screen and (max-device-width: 768px) {
+  .antcard {
+    margin-top: 1rem;
+  }
+}

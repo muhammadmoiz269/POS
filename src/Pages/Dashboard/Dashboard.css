@@ -1,0 +1,16 @@
+.head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: initial;
+  padding-right: 0rem;
+  padding-left: 3rem;
+  background: #cedde7;
+  /* box-shadow: 5px 10px #888888; */
+}
+.layout {
+  margin-left: 205px;
+}
+.footer {
+  height: 150px;
+}
