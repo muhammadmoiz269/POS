@@ -8,6 +8,13 @@
   border-radius: 10px;
   height: min-content;
 }
+.taskUpperSection {
+  display: flex;
+  justify-content: space-between;
+}
+.taskUpperSection > :first-child {
+  margin-left: 1rem;
+}
 .MuiGridCont {
   display: flex !important;
   justify-content: space-around !important;

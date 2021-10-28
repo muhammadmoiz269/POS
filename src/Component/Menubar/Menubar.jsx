@@ -38,15 +38,12 @@ const Menubar = ({ showDrawer, onClose, visible }) => {
         width="245"
       >
         {visible ? (
-          <LeftOutlined
-            style={{ float: "right", padding: "1rem 1rem" }}
-            onClick={onClose}
-          />
+          <LeftOutlined className="LeftIcon" onClick={onClose} />
         ) : (
           <></>
         )}
         <div className="MenuBarUpperSection">
-          <div className="flex1" style={{ paddingTop: "2rem" }}>
+          <div className="flex1">
             <FlagOutlined className="flagIcon" />
             <Title level={5}>BUILDCRM</Title>
           </div>

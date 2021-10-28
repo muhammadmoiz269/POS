@@ -8,6 +8,25 @@
   background: #cedde7;
   /* box-shadow: 5px 10px #888888; */
 }
+.dashboardContent {
+  padding: 1rem 0.5rem;
+  background: #ffff;
+  border-bottom: 1px solid gray;
+}
+.footerSection {
+  display: flex;
+  justify-content: center;
+  background: #004d8b;
+  align-items: center;
+  height: 100%;
+}
+.footerInnerSection {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #0a78c7;
+  height: 100%;
+}
 .layout {
   margin-left: 205px;
 }

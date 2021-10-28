@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col, Divider } from "antd";
 import Addcard from "../Addcard/Addcard";
 import { UserOutlined, LeftOutlined, RightOutlined } from "@ant-design/icons";
@@ -12,38 +12,6 @@ import moment from "moment";
 
 import "./MeetingSection.css";
 
-const product = [
-  {
-    productname: "Call Ana Care  installation",
-    time: "9:00 Am",
-    avatar: "https://avatars.githubusercontent.com/u/1674036?s=40&v=4",
-    background: "#ECBB3D",
-  },
-  {
-    productname: "Product Delievery  time",
-    time: "Today",
-    avatar: "https://avatars.githubusercontent.com/u/1674036?s=40&v=4",
-    background: "#80C7D0",
-  },
-  {
-    productname: "Follow up with Cambria",
-    time: "Today",
-    avatar: "https://avatars.githubusercontent.com/u/1674036?s=40&v=4",
-    background: "#F98341",
-  },
-  {
-    productname: "Brochure  Review",
-    time: "Tomorrow",
-    avatar: "https://avatars.githubusercontent.com/u/1674036?s=40&v=4",
-    background: "#B1A8DE",
-  },
-  {
-    productname: "Brian Noble Pick Up",
-    time: "2:00 Pm",
-    avatar: "https://avatars.githubusercontent.com/u/1674036?s=40&v=4",
-    background: "#80C7D0",
-  },
-];
 const filmMaking = [
   {
     name: "Set up installment for Anna Care",
@@ -89,62 +57,44 @@ const filmMaking = [
     time: "11:00 am",
   },
 ];
-const monthNames = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
 
 const MeetingSection = () => {
-  const [CurrentDate, setCurrentDate] = useState(moment().format("DD"));
-  const [CurrentMonth, setCurrentMonth] = useState(moment().format("MMM"));
+  const [CurrentDate, setCurrentDate] = useState(moment());
+  const [date, setDate] = useState(moment().format("DD"));
 
-  const getDate = (date, Month) => {
-    setCurrentDate(date);
-    setCurrentMonth(Month);
-    console.log("date is ", date);
-    console.log("Month is ", Month);
+  const getDate = (value) => {
+    setDate(date);
+    setCurrentDate(value);
   };
 
   return (
     <div className="MeetingSec">
       <Row>
-        <Col
-          xs={24}
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-        >
-          <div style={{ marginLeft: "1rem" }}>
+        <Col className="meetingSection" xs={24}>
+          <div className="meetingSectionHeading">
             <AntType text="Calendar" fontSize={3} color="black" align="left" />
           </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-around",
-              alignItems: "center",
-            }}
-          >
-            <LeftOutlined className="LeftOutlineIcon" />
+          <div className="meetingSectionPlacement">
+            <LeftOutlined
+              onClick={() => {
+                setDate(CurrentDate.subtract(1, "days").format("DD"));
+              }}
+              className="LeftOutlineIcon"
+            />
 
             <AntType
-              text={`${CurrentMonth}-${CurrentDate}`}
+              text={`${CurrentDate.format("MMM")}-${CurrentDate.format("DD")}`}
               fontSize={5}
               color="gray"
               align="center"
             />
 
-            <RightOutlined className="RightOutlineIcon" />
+            <RightOutlined
+              onClick={() => {
+                setDate(CurrentDate.add(1, "days").format("DD"));
+              }}
+              className="RightOutlineIcon"
+            />
           </div>
           <div>
             <AntButton
@@ -157,13 +107,7 @@ const MeetingSection = () => {
       </Row>
       <Row>
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Row
-            style={{
-              display: "flex",
-              justifyContent: "space-around",
-              alignItems: "center",
-            }}
-          >
+          <Row className="meetingSectionPlacement">
             <AntCalendar getDate={getDate} />
           </Row>
         </Col>
@@ -173,11 +117,8 @@ const MeetingSection = () => {
           sm={24}
           md={24}
           lg={12}
-          style={{
-            height: "330px",
-            overflowY: "scroll",
-            scrollbarWidth: "10px",
-          }}
+          className="meetingSectionScrollBar"
+          style={{}}
         >
           {filmMaking.map((items) => {
             return <Todo item={items} />;

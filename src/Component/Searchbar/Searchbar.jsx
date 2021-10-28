@@ -7,15 +7,7 @@ const { Search } = Input;
 
 const onSearch = (value) => console.log(value);
 
-const suffix = (
-  <SearchOutlined
-    style={{
-      fontSize: 16,
-      color: "#1890ff",
-      background: "#F1F1F1",
-    }}
-  />
-);
+const suffix = <SearchOutlined className="searchIcon" />;
 
 const Searchbar = () => {
   const [dropdownvisible, setdropdownvisible] = useState(false);
@@ -26,9 +18,9 @@ const Searchbar = () => {
   return (
     <div className="Search">
       <Input
+        className="searchInput"
         placeholder="Search"
         onSearch={onSearch}
-        style={{ width: "300px", background: "#F1F1F1", borderRadius: "10px" }}
         onClick={SetDropDown}
         bordered={false}
         suffix={suffix}

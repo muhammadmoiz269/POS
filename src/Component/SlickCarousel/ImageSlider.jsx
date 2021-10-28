@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import "slick-carousel/slick/slick.css";
-import { Row, Col, Divider } from "antd";
-
+import { Col } from "antd";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { UserOutlined, LeftOutlined, RightOutlined } from "@ant-design/icons";
 import "./ImageSlider.css";
 
 import TaskCard from "../TaskCard/TaskCard";

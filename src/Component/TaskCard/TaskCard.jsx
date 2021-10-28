@@ -10,15 +10,7 @@ const TaskCard = ({ item }) => {
     console.log(`checked = ${e.target.checked}`);
   }
   return (
-    <Row
-      style={{
-        marginTop: "2rem",
-        marginBottom: "2rem",
-        display: "flex",
-        justifyContent: "space-around",
-        alignItems: "center",
-      }}
-    >
+    <Row className="taskCardSection">
       <Col>
         <Card bodyStyle={{ background: item.background }} className="taskcard">
           <div>
@@ -43,14 +35,7 @@ const TaskCard = ({ item }) => {
           <div style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>
             <Checkbox onChange={onChange}></Checkbox>
           </div>
-          <div
-            className="dateBox"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
+          <div className="dateBox flex">
             <Paragraph
               text="Mar 11"
               fontSize="0.8rem"

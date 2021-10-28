@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { Popover, Button } from "antd";
-import { DownOutlined, UpOutlined } from "@ant-design/icons";
-import "./ProfileCard.css";
+import { DownOutlined, UpOutlined, LogoutOutlined } from "@ant-design/icons";
 import Navbarinfo from "../Navbarinfo/Navbarinfo";
-import AntType from "../AntTypo/AntType";
 import Paragraph from "../Paragraph/Paragraph";
-import { Divider } from "antd";
 import AntButton from "../AntButton/AntButton";
+import "./ProfileCard.css";
 
 const icon = <UpOutlined style={{ color: "#ffff" }} />;
 
@@ -23,6 +21,16 @@ const names = [
   {
     text: "Account",
   },
+  {
+    text: "LogOut",
+    display: "flex",
+
+    icon1: (
+      <LogoutOutlined
+        style={{ color: "#004d8b", fontSize: "1.2rem", paddingRight: "0.5rem" }}
+      />
+    ),
+  },
 ];
 
 const ProfileCard = () => {
@@ -36,30 +44,15 @@ const ProfileCard = () => {
     setvisible(visible);
   };
   return (
-    <div>
+    <div style={{ borderRadius: "100px" }}>
       <Popover
-        overlayStyle={{ borderRadius: "10px" }}
         content={
           <div className="ProfileBox">
-            <div
-              className="UpperSection"
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                flexDirection: "column",
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
+            <div className="UpperSection">
+              <div className="flex">
                 <Navbarinfo color="#ffff" icon={icon} />
               </div>
-              <div style={{ flexFlow: "column" }}>
+              <div className="profileButton">
                 <AntButton
                   background="#ffff"
                   color="#00818F"
@@ -72,7 +65,9 @@ const ProfileCard = () => {
               {names.map((item) => {
                 return (
                   <Paragraph
+                    display={item.display ? item.display : ""}
                     text={item.text}
+                    icon={item.icon1 ? item.icon1 : <></>}
                     fontSize="1rem"
                     color="gray"
                     borderBottom="1px solid #DCDCDC"
@@ -80,13 +75,6 @@ const ProfileCard = () => {
                   />
                 );
               })}
-
-              <Paragraph
-                text="Log Out"
-                fontSize="1rem"
-                color="gray"
-                padding="0.3rem 0.5rem"
-              />
             </div>
           </div>
         }
