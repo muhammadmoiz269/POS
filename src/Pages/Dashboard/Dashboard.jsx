@@ -21,7 +21,7 @@ const Dashboard = () => {
       <Layout>
         <Menubar style={{ width: "205px" }} />
 
-        <Layout style={{ marginLeft: "205px" }}>
+        <Layout style={{ marginLeft: "300px" }}>
           <Header className="head">
             <MenuOutlined />
             <Navbar />
