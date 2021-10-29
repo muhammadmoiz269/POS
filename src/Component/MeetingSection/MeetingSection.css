@@ -10,6 +10,23 @@
   border-radius: 10px;
   height: min-content;
 }
+.meetingSection {
+  display: flex;
+  justify-content: space-between;
+}
+.meetingSectionHeading {
+  margin-left: 1rem;
+}
+.meetingSectionScrollBar {
+  height: 330px;
+  overflow-y: scroll;
+  scrollbar-width: 10px;
+}
+.meetingSectionPlacement {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
 /* //for Hiding scroll bar */
 ::-webkit-scrollbar {
   width: 1px;

@@ -7,15 +7,7 @@ import AntType from "../AntTypo/AntType";
 const AppointmentCard = ({ item }) => {
   return (
     <Card className="appointcard">
-      <div
-        style={{
-          fontSize: "2.2rem",
-          padding: "1rem",
-          color: "#00818F",
-        }}
-      >
-        {item.icon}
-      </div>
+      <div className="appointIcon">{item.icon}</div>
       <div style={{ padding: "1rem", textAlign: "left" }}>
         <AntType text={item.time} fontSize={5} color="#C95B1D" align="left" />
 

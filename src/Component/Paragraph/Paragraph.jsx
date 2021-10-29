@@ -1,5 +1,6 @@
 import React from "react";
 import { Typography, Space } from "antd";
+import { icons } from "antd/lib/image/PreviewGroup";
 
 const { Text, Link } = Typography;
 
@@ -11,6 +12,9 @@ const Paragraph = ({
   align,
   borderBottom,
   padding,
+  display,
+
+  icon,
 }) => {
   return (
     <div
@@ -20,9 +24,13 @@ const Paragraph = ({
         textAlign: align,
         borderBottom: borderBottom,
         padding: padding,
+        display: display,
       }}
     >
-      <Text style={{ color: color }}>{text}</Text>
+      <div>{icon}</div>
+      <div>
+        <Text style={{ color: color }}>{text}</Text>
+      </div>
     </div>
   );
 };

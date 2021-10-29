@@ -1,8 +1,18 @@
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .ant-popover-inner-content {
   padding: 0 0;
 }
 
 .UpperSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
   padding-top: 1rem;
   padding-bottom: 0.2rem;
   height: 32%;
@@ -17,11 +27,16 @@
   width: 210px;
   position: absolute;
   top: -11px;
-  right: -23px;
+  right: -22px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+.profileButton {
+  flex-flow: column;
 }
 .PopOver {
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-  border-radius: 50%;
+  /* border-radius: 50%; */
 }
 @media only screen and (max-device-width: 1024px) {
   .antcard {

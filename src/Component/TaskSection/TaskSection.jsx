@@ -46,14 +46,8 @@ const TaskSection = () => {
   return (
     <div className="TaskSec">
       <Row>
-        <Col
-          xs={24}
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-        >
-          <div style={{ marginLeft: "1rem" }}>
+        <Col className="taskUpperSection" xs={24}>
+          <div>
             <AntType text="Tasks" fontSize={3} color="black" align="left" />
           </div>
           <div>
@@ -63,14 +57,6 @@ const TaskSection = () => {
       </Row>
       <div>
         <ImageSlider />
-        {/* <AntCarousel /> */}
-        {/* {product.map((items) => {
-          return (
-            <Col xl={4} lg={8} md={12} sm={12} xs={24}>
-              <TaskCard item={items} />
-            </Col>
-          );
-        })} */}
       </div>
     </div>
   );

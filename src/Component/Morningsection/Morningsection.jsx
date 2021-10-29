@@ -3,24 +3,25 @@ import AntType from "../AntTypo/AntType";
 import { MenuFoldOutlined } from "@ant-design/icons";
 import Paragraph from "../Paragraph/Paragraph";
 import ProfileCard from "../ProfileCard/ProfileCard";
+import "./MorningSection.css";
 
 const Morningsection = () => {
   return (
-    <div style={{ paddingLeft: "1rem", position: "relative" }}>
+    <div className="morningSection">
       <AntType
         text="Good Morning Aftab"
         fontSize={1}
         fontWeight={true}
         color="#1D1C1C"
       />
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
+      <div className="morningHeadingSection">
         <Paragraph
           text="Hey Whats happening at floor and toronto."
           fontSize="1rem"
           color="gray"
         />
 
-        <div style={{ display: "flex" }}>
+        <div className="morningSortSection">
           <AntType
             text="Filter and sort."
             fontSize={5}

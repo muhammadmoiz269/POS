@@ -16,15 +16,7 @@ const Navbar = () => {
 
         <Navbarinfo />
       </Col>
-      <Col
-        span={4}
-        style={{
-          background: "#ffff",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <Col span={4} className="navBarImage">
         <Antimage img={HomeImg} />
       </Col>
     </Row>

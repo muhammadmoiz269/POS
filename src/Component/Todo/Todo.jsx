@@ -20,9 +20,6 @@ const Todo = ({ item }) => {
       <div style={{ paddingLeft: "2rem" }}>
         <AntType text={item.time} fontSize={4} color="black" align="left" />
 
-        {/* <Text strong={true} style={{ fontSize: "1.2rem", marginTop: "2rem" }}>
-          {item.name}
-        </Text> */}
         <Paragraph text={item.name} fontSize="1rem" color="gray" />
       </div>
       <div
