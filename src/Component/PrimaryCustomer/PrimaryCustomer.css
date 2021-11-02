@@ -1,0 +1,17 @@
+.primaryCustomer {
+  padding: 1rem 0rem;
+}
+.account {
+  padding: 1rem 0rem;
+}
+.nameFields {
+  display: flex;
+  /* justify-content: space-between; */
+  padding: 1rem 0rem;
+  width: 100%;
+}
+.names {
+  width: 400px;
+  margin-right: 1rem;
+  /* margin: 0rem 0.5rem; */
+}

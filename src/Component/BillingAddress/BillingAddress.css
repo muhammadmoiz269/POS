@@ -1,0 +1,16 @@
+.zip {
+  width: 200px;
+  margin-right: 1rem;
+}
+.city {
+  width: 300px;
+  margin-right: 1rem;
+}
+.state {
+  width: 250px;
+  margin-right: 1rem;
+}
+textarea.ant-input {
+  /* max-width: 0; */
+  width: 100%;
+}

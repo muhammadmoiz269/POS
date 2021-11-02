@@ -21,13 +21,13 @@ function onSearch(val) {
   console.log("search:", val);
 }
 
-const AntSelect = () => {
+const AntSelect = ({ placeholder, isCustomerPage }) => {
   return (
     <div>
       <Select
         className="Searchbr"
         showSearch={true}
-        placeholder="Search"
+        placeholder={placeholder}
         optionFilterProp="children"
         onChange={onChange}
         onFocus={onFocus}

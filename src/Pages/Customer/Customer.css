@@ -1,0 +1,11 @@
+.customerContent {
+  padding: 1rem 2rem;
+  background: #ffff;
+  border-bottom: 1px solid gray;
+}
+.customerHeadSection {
+  border-bottom: 1px solid #dcdcdc;
+}
+.BtnWidth {
+  width: 120px;
+}
