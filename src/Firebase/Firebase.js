@@ -1,7 +1,7 @@
-import firebase from "firebase/app";
-import "firebase/firestore";
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
 
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyAvjM5wiyo44-8LixN7AkfHHrxXEBTyGxM",
   authDomain: "pointofsale-dfff8.firebaseapp.com",
   projectId: "pointofsale-dfff8",
@@ -10,7 +10,6 @@ var firebaseConfig = {
   appId: "1:755299976353:web:8189faf77bbb249bf5dce0",
   measurementId: "G-MGXLD3QSKK",
 };
-
 firebase.initializeApp(firebaseConfig);
 
 export var firestore = firebase.firestore();

@@ -5,7 +5,7 @@ import AntType from "../AntTypo/AntType";
 import UserInfoFields from "../UserInfoFields/UserInfoFields";
 import "./PrimaryCustomer.css";
 
-const PrimaryCustomer = () => {
+const PrimaryCustomer = ({ addCustomer, isBtnClick }) => {
   return (
     <div className="primaryCustomer">
       <AntType
@@ -30,7 +30,7 @@ const PrimaryCustomer = () => {
           fontWeight={true}
           color="#1D1C1C"
         />
-        <UserInfoFields />
+        <UserInfoFields addCustomer={addCustomer} isBtnClick={isBtnClick} />
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import AntInput from "../AntInput/AntInput";
 import AntSelect from "../AntSelect/AntSelect";
 import AntType from "../AntTypo/AntType";
@@ -13,7 +13,41 @@ function onChange(e) {
   console.log(`checked = ${e.target.checked}`);
 }
 
-const BillingAddress = () => {
+const BillingAddress = ({ addCustomerAddress, isBtnClick }) => {
+  const [homeAddress, sethomeAddress] = useState("");
+  const [appartment, setappartment] = useState("");
+  const [zip, setzip] = useState("");
+  const [city, setcity] = useState("");
+  const [province, setprovince] = useState("");
+
+  const setUserInfo = (userInfo, value) => {
+    switch (value) {
+      case "homeAddress":
+        return sethomeAddress(userInfo);
+
+      case "appartment":
+        return setappartment(userInfo);
+      case "zip":
+        return setzip(userInfo);
+      case "city":
+        return setcity(userInfo);
+      case "province":
+        return setprovince(userInfo);
+
+      default:
+        return "";
+    }
+  };
+  var userObj = {
+    homeAddress,
+    appartment,
+    zip,
+    city,
+    province,
+  };
+  if (isBtnClick === true) {
+    addCustomerAddress(userObj);
+  }
   return (
     <div>
       <div>
@@ -38,7 +72,11 @@ const BillingAddress = () => {
               fontWeight={true}
               color="#1D1C1C"
             />
-            <AntInput placeholder="10 brown street" />
+            <AntInput
+              placeholder="10 brown street"
+              setUserInfo={setUserInfo}
+              value="homeAddress"
+            />
           </div>
         </div>
         <div className="names">
@@ -48,7 +86,11 @@ const BillingAddress = () => {
             fontWeight={true}
             color="#1D1C1C"
           />
-          <AntInput placeholder="Suite No 302" />
+          <AntInput
+            placeholder="Suite No 302"
+            setUserInfo={setUserInfo}
+            value="appartment"
+          />
         </div>
         <div className="nameFields">
           <div className="zip">
@@ -58,7 +100,11 @@ const BillingAddress = () => {
               fontWeight={true}
               color="#1D1C1C"
             />
-            <AntInput placeholder="416-555-000" />
+            <AntInput
+              placeholder="416-555-000"
+              setUserInfo={setUserInfo}
+              value="zip"
+            />
           </div>
           <div className="city">
             <AntType
@@ -67,7 +113,11 @@ const BillingAddress = () => {
               fontWeight={true}
               color="#1D1C1C"
             />
-            <AntInput placeholder="555-416-000" />
+            <AntInput
+              placeholder="555-416-000"
+              setUserInfo={setUserInfo}
+              value="city"
+            />
           </div>
           <div className="state">
             <AntType
@@ -76,7 +126,11 @@ const BillingAddress = () => {
               fontWeight={true}
               color="#1D1C1C"
             />
-            <AntInput placeholder="555-416-000" />
+            <AntInput
+              placeholder="555-416-000"
+              setUserInfo={setUserInfo}
+              value="province"
+            />
           </div>
         </div>
         <div className="nameFields">
