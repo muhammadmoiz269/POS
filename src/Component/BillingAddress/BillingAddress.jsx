@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AntInput from "../AntInput/AntInput";
 import AntSelect from "../AntSelect/AntSelect";
 import AntType from "../AntTypo/AntType";
@@ -13,41 +13,7 @@ function onChange(e) {
   console.log(`checked = ${e.target.checked}`);
 }
 
-const BillingAddress = ({ addCustomerAddress, isBtnClick }) => {
-  const [homeAddress, sethomeAddress] = useState("");
-  const [appartment, setappartment] = useState("");
-  const [zip, setzip] = useState("");
-  const [city, setcity] = useState("");
-  const [province, setprovince] = useState("");
-
-  const setUserInfo = (userInfo, value) => {
-    switch (value) {
-      case "homeAddress":
-        return sethomeAddress(userInfo);
-
-      case "appartment":
-        return setappartment(userInfo);
-      case "zip":
-        return setzip(userInfo);
-      case "city":
-        return setcity(userInfo);
-      case "province":
-        return setprovince(userInfo);
-
-      default:
-        return "";
-    }
-  };
-  var userObj = {
-    homeAddress,
-    appartment,
-    zip,
-    city,
-    province,
-  };
-  if (isBtnClick === true) {
-    addCustomerAddress(userObj);
-  }
+const BillingAddress = ({ setUserInfo }) => {
   return (
     <div>
       <div>
@@ -81,7 +47,7 @@ const BillingAddress = ({ addCustomerAddress, isBtnClick }) => {
         </div>
         <div className="names">
           <AntType
-            text="*Appartment, Suite etc"
+            text="Appartment, Suite etc"
             fontSize={5}
             fontWeight={true}
             color="#1D1C1C"
@@ -95,7 +61,7 @@ const BillingAddress = ({ addCustomerAddress, isBtnClick }) => {
         <div className="nameFields">
           <div className="zip">
             <AntType
-              text="Zip / Postal Code"
+              text="Zip Code"
               fontSize={5}
               fontWeight={true}
               color="#1D1C1C"
@@ -152,7 +118,10 @@ const BillingAddress = ({ addCustomerAddress, isBtnClick }) => {
               fontWeight={true}
               color="#1D1C1C"
             />
-            <TextArea rows={4} />
+            <TextArea
+              rows={4}
+              onChange={(e) => setUserInfo(e.target.value, "notes")}
+            />
           </div>
         </div>
       </div>

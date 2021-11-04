@@ -9,42 +9,7 @@ function onChange(e) {
   console.log(`checked = ${e.target.checked}`);
 }
 
-const UserInfoFields = ({ isCompany, addCustomer, isBtnClick }) => {
-  const [firstName, setfirstName] = useState("");
-  const [lastName, setlastName] = useState("");
-  const [emailAddress, setemailAddress] = useState("");
-  const [mobileNumber, setmobileNumber] = useState("");
-  const [homeNumber, sethomeNumber] = useState("");
-
-  const setUserInfo = (userInfo, value) => {
-    switch (value) {
-      case "firstName":
-        return setfirstName(userInfo);
-
-      case "lastName":
-        return setlastName(userInfo);
-      case "emailAddress":
-        return setemailAddress(userInfo);
-      case "mobileNumber":
-        return setmobileNumber(userInfo);
-      case "homeNumber":
-        return sethomeNumber(userInfo);
-
-      default:
-        return "";
-    }
-  };
-  var userObj = {
-    firstName,
-    lastName,
-    emailAddress,
-    mobileNumber,
-    homeNumber,
-  };
-  if (isBtnClick === true) {
-    addCustomer(userObj);
-  }
-
+const UserInfoFields = ({ isCompany, setUserInfo, isAdditionalUser }) => {
   return (
     <div>
       {isCompany ? (
@@ -75,7 +40,13 @@ const UserInfoFields = ({ isCompany, addCustomer, isBtnClick }) => {
           <AntInput
             placeholder={isCompany ? "Company Name" : "*First Name"}
             setUserInfo={setUserInfo}
-            value="firstName"
+            value={
+              isAdditionalUser
+                ? "addCustomerFirstName"
+                : isCompany
+                ? "companyName"
+                : "firstName"
+            }
           />
         </div>
         {isCompany ? (
@@ -92,7 +63,7 @@ const UserInfoFields = ({ isCompany, addCustomer, isBtnClick }) => {
             <AntInput
               placeholder="Last Name"
               setUserInfo={setUserInfo}
-              value="lastName"
+              value={isAdditionalUser ? "addCustomerLastName" : "lastName"}
             />
           </div>
         )}
@@ -107,7 +78,13 @@ const UserInfoFields = ({ isCompany, addCustomer, isBtnClick }) => {
         <AntInput
           placeholder="Email Address"
           setUserInfo={setUserInfo}
-          value="emailAddress"
+          value={
+            isAdditionalUser
+              ? "addCustomerEmailAddress"
+              : isCompany
+              ? "companyEmailAddress"
+              : "emailAddress"
+          }
         />
       </div>
       <div className="nameFields">
@@ -121,7 +98,13 @@ const UserInfoFields = ({ isCompany, addCustomer, isBtnClick }) => {
           <AntInput
             placeholder="416-555-000"
             setUserInfo={setUserInfo}
-            value="mobileNumber"
+            value={
+              isAdditionalUser
+                ? "addCustomerMobileNumber"
+                : isCompany
+                ? "companyMobileNumber"
+                : "mobileNumber"
+            }
           />
         </div>
         <div className="names">
@@ -134,7 +117,13 @@ const UserInfoFields = ({ isCompany, addCustomer, isBtnClick }) => {
           <AntInput
             placeholder="555-416-000"
             setUserInfo={setUserInfo}
-            value="homeNumber"
+            value={
+              isAdditionalUser
+                ? "addCustomerHomeNumber"
+                : isCompany
+                ? "companyOfficeNumber"
+                : "homeNumber"
+            }
           />
         </div>
       </div>

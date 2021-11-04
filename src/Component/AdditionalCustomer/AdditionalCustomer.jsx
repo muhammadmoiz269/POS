@@ -8,7 +8,7 @@ import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 
 const { Panel } = Collapse;
 
-const AdditionalCustomer = ({ addCustomer, isBtnClick }) => {
+const AdditionalCustomer = ({ setUserInfo }) => {
   const [iconVisible, seticonVisible] = useState(["1"]);
   function callback(key) {
     console.log("key", key);
@@ -42,7 +42,7 @@ const AdditionalCustomer = ({ addCustomer, isBtnClick }) => {
           }
           key="1"
         >
-          <UserInfoFields addCustomer={addCustomer} isBtnClick={isBtnClick} />
+          <UserInfoFields isAdditionalUser="true" setUserInfo={setUserInfo} />
         </Panel>
       </Collapse>
     </div>
