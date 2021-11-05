@@ -148,7 +148,6 @@ const Customer = () => {
         allLetter(firstName, "Mandatory"),
         allLetter(lastName, "Mandatory"),
         allLetter(homeAddress, "notMandatory"),
-        allLetter(appartment, "notMandatory"),
         allLetter(province, "notMandatory"),
         allLetter(city, "notMandatory"),
 

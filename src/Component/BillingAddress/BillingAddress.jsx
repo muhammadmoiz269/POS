@@ -119,7 +119,9 @@ const BillingAddress = ({ setUserInfo }) => {
               color="#1D1C1C"
             />
             <TextArea
-              rows={4}
+              // style={{ width: "100%", maxWidth: "100%" }}
+
+              rows={6}
               onChange={(e) => setUserInfo(e.target.value, "notes")}
             />
           </div>
