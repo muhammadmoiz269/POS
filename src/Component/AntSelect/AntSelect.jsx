@@ -5,23 +5,27 @@ import { SearchOutlined } from "@ant-design/icons";
 
 const { Option } = Select;
 
-function onChange(value) {
-  console.log(`selected ${value}`);
-}
-
 function onBlur() {
-  console.log("blur");
+  // console.log("blur");
 }
 
 function onFocus() {
-  console.log("focus");
+  // console.log("focus");
 }
 
 function onSearch(val) {
-  console.log("search:", val);
+  // console.log("search:", val);
 }
 
-const AntSelect = ({ placeholder, isCustomerPage }) => {
+const AntSelect = ({ placeholder, setUserInfo, valueName, setProductInfo }) => {
+  function onChange(value) {
+    if (setUserInfo) {
+      setUserInfo(value, valueName);
+    }
+    if (setProductInfo) {
+      setProductInfo(value, valueName);
+    }
+  }
   return (
     <div>
       <Select

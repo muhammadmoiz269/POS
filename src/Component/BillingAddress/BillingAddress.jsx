@@ -67,6 +67,7 @@ const BillingAddress = ({ setUserInfo }) => {
               color="#1D1C1C"
             />
             <AntInput
+              regex={/^[0-9]+$/}
               placeholder="416-555-000"
               setUserInfo={setUserInfo}
               value="zip"
@@ -80,6 +81,7 @@ const BillingAddress = ({ setUserInfo }) => {
               color="#1D1C1C"
             />
             <AntInput
+              regex={/^[A-Za-z]+$/}
               placeholder="555-416-000"
               setUserInfo={setUserInfo}
               value="city"
@@ -93,7 +95,8 @@ const BillingAddress = ({ setUserInfo }) => {
               color="#1D1C1C"
             />
             <AntInput
-              placeholder="555-416-000"
+              regex={/^[A-Za-z]+$/}
+              placeholder="Sindh"
               setUserInfo={setUserInfo}
               value="province"
             />
@@ -107,11 +110,15 @@ const BillingAddress = ({ setUserInfo }) => {
               fontWeight={true}
               color="#1D1C1C"
             />
-            <AntSelect placeholder="Make a Selection" />
+            <AntSelect
+              placeholder="Make a Selection"
+              setUserInfo={setUserInfo}
+              valueName="hearAboutUs"
+            />
           </div>
         </div>
         <div className="nameFields">
-          <div className="names">
+          <div className="textAreaWidth">
             <AntType
               text="Customer notes"
               fontSize={5}

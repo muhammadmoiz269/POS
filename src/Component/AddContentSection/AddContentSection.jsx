@@ -9,7 +9,7 @@ import "./AddContentSection.css";
 const style = { background: "#0092ff", padding: "8px 0" };
 const product = [
   { title: "Add a Customer", icon: <UserOutlined />, slug: "/customer" },
-  { title: "Add a Product", icon: <UserOutlined />, slug: "/customer" },
+  { title: "Add a Product", icon: <UserOutlined />, slug: "/product" },
 ];
 const product1 = [
   {

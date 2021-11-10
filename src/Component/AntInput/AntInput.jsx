@@ -1,14 +1,49 @@
 import React, { useState, useEffect } from "react";
 import "./AntInput.css";
-import { Input } from "antd";
+import { Input, Form } from "antd";
 
-const AntInput = ({ placeholder, value, setUserInfo }) => {
+const AntInput = ({
+  placeholder,
+  isRequired,
+  value,
+  regex,
+  setUserInfo,
+  setProductInfo,
+}) => {
   return (
-    <Input
-      placeholder={placeholder}
-      size="middle"
-      onChange={(e) => setUserInfo(e.target.value, value)}
-    />
+    <div>
+      <Form>
+        <Form.Item
+          label={isRequired && value}
+          name={value}
+          rules={[
+            {
+              required: isRequired,
+              message: `Please input your ${value.toLowerCase()}!`,
+            },
+            {
+              pattern: regex,
+              message: `Please enter a valid ${value.toLowerCase()}`,
+            },
+          ]}
+        >
+          <Input
+            name={value}
+            placeholder={placeholder}
+            size="middle"
+            onChange={(e) =>
+              setUserInfo ? (
+                setUserInfo(e.target.value, value)
+              ) : setProductInfo ? (
+                setProductInfo(e.target.value, value)
+              ) : (
+                <></>
+              )
+            }
+          />
+        </Form.Item>
+      </Form>
+    </div>
   );
 };
 

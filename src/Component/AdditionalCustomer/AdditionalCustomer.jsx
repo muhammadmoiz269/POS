@@ -5,10 +5,11 @@ import UserInfoFields from "../UserInfoFields/UserInfoFields";
 import "./AdditionalCustomer.css";
 import AntType from "../AntTypo/AntType";
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
+import AntInput from "../AntInput/AntInput";
 
 const { Panel } = Collapse;
 
-const AdditionalCustomer = ({ setUserInfo }) => {
+const AdditionalCustomer = ({ setUserInfo, isProduct, setProductInfo }) => {
   const [iconVisible, seticonVisible] = useState(["1"]);
   function callback(key) {
     console.log("key", key);
@@ -42,7 +43,23 @@ const AdditionalCustomer = ({ setUserInfo }) => {
           }
           key="1"
         >
-          <UserInfoFields isAdditionalUser="true" setUserInfo={setUserInfo} />
+          {isProduct ? (
+            <>
+              <AntType
+                text="Enter Color"
+                fontSize={5}
+                fontWeight={true}
+                color="#1D1C1C"
+              />
+              <AntInput
+                placeholder="Blue"
+                setProductInfo={setProductInfo}
+                value="additionalColor"
+              />
+            </>
+          ) : (
+            <UserInfoFields isAdditionalUser="true" setUserInfo={setUserInfo} />
+          )}
         </Panel>
       </Collapse>
     </div>

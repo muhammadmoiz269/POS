@@ -1,9 +1,9 @@
 .zip {
-  width: 200px;
+  width: 250px;
   margin-right: 1rem;
 }
 .city {
-  width: 300px;
+  width: 250px;
   margin-right: 1rem;
 }
 .state {
@@ -12,5 +12,8 @@
 }
 textarea.ant-input {
   /* max-width: 0; */
-  /* width: 100%; */
+  width: 100%;
+}
+.textAreaWidth {
+  width: 75%;
 }

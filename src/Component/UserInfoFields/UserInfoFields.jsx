@@ -9,7 +9,12 @@ function onChange(e) {
   console.log(`checked = ${e.target.checked}`);
 }
 
-const UserInfoFields = ({ isCompany, setUserInfo, isAdditionalUser }) => {
+const UserInfoFields = ({
+  isCompany,
+  setUserInfo,
+  isAdditionalUser,
+  requiredUser,
+}) => {
   return (
     <div>
       {isCompany ? (
@@ -32,13 +37,15 @@ const UserInfoFields = ({ isCompany, setUserInfo, isAdditionalUser }) => {
       <div className="nameFields">
         <div className="names">
           <AntType
-            text={isCompany ? "*Company Name" : "*First Name"}
+            text={isCompany ? "Company Name" : "*First Name"}
             fontSize={5}
             fontWeight={true}
             color="#1D1C1C"
           />
           <AntInput
-            placeholder={isCompany ? "Company Name" : "*First Name"}
+            placeholder={isCompany ? "Company Name" : "First Name"}
+            regex={/^[A-Za-z]+$/}
+            isRequired={requiredUser}
             setUserInfo={setUserInfo}
             value={
               isAdditionalUser
@@ -61,6 +68,8 @@ const UserInfoFields = ({ isCompany, setUserInfo, isAdditionalUser }) => {
             />
 
             <AntInput
+              isRequired={requiredUser}
+              regex={/^[A-Za-z]+$/}
               placeholder="Last Name"
               setUserInfo={setUserInfo}
               value={isAdditionalUser ? "addCustomerLastName" : "lastName"}
@@ -76,6 +85,8 @@ const UserInfoFields = ({ isCompany, setUserInfo, isAdditionalUser }) => {
           color="#1D1C1C"
         />
         <AntInput
+          isRequired={requiredUser}
+          regex={/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/}
           placeholder="Email Address"
           setUserInfo={setUserInfo}
           value={
@@ -90,12 +101,13 @@ const UserInfoFields = ({ isCompany, setUserInfo, isAdditionalUser }) => {
       <div className="nameFields">
         <div className="names">
           <AntType
-            text="*Mobile Phone Number"
+            text="Mobile Phone Number"
             fontSize={5}
             fontWeight={true}
             color="#1D1C1C"
           />
           <AntInput
+            regex={/^[0-9]+$/}
             placeholder="416-555-000"
             setUserInfo={setUserInfo}
             value={
@@ -115,6 +127,7 @@ const UserInfoFields = ({ isCompany, setUserInfo, isAdditionalUser }) => {
             color="#1D1C1C"
           />
           <AntInput
+            regex={/^[0-9]+$/}
             placeholder="555-416-000"
             setUserInfo={setUserInfo}
             value={

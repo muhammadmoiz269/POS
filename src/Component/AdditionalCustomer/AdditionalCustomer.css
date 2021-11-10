@@ -7,3 +7,11 @@
   border: none;
   border-top: none;
 }
+.ant-collapse
+  > .ant-collapse-item.ant-collapse-no-arrow
+  > .ant-collapse-header {
+  padding-left: 0px !important;
+}
+.productFields {
+  width: 63%;
+}

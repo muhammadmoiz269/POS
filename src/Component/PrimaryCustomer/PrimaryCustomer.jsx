@@ -21,7 +21,11 @@ const PrimaryCustomer = ({ setUserInfo }) => {
           fontWeight={true}
           color="#1D1C1C"
         />
-        <AntSelect placeholder="Make a Selection" />
+        <AntSelect
+          placeholder="Make a Selection"
+          setUserInfo={setUserInfo}
+          valueName="accountManager"
+        />
       </div>
       <div>
         <AntType
@@ -30,7 +34,7 @@ const PrimaryCustomer = ({ setUserInfo }) => {
           fontWeight={true}
           color="#1D1C1C"
         />
-        <UserInfoFields setUserInfo={setUserInfo} />
+        <UserInfoFields setUserInfo={setUserInfo} requiredUser="true" />
       </div>
     </div>
   );
