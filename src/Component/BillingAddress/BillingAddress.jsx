@@ -5,8 +5,7 @@ import AntType from "../AntTypo/AntType";
 import "../PrimaryCustomer/PrimaryCustomer.css";
 import { Checkbox } from "antd";
 import "./BillingAddress.css";
-
-import { Input } from "antd";
+import { Input, Form } from "antd";
 
 const { TextArea } = Input;
 function onChange(e) {
@@ -15,123 +14,120 @@ function onChange(e) {
 
 const BillingAddress = ({ setUserInfo }) => {
   return (
-    <div>
+    <div className="billingSection">
       <div>
-        <div>
-          <AntType
-            text="Billing Address"
-            fontSize={5}
-            fontWeight={true}
-            color="#1D1C1C"
-          />
+        <AntType
+          text="Billing Address"
+          fontSize={4}
+          fontWeight={true}
+          color="#1D1C1C"
+        />
 
-          <Checkbox onChange={onChange}>
-            Add a different shipping address
-          </Checkbox>
-        </div>
+        <Checkbox onChange={onChange}>
+          Add a different shipping address
+        </Checkbox>
+      </div>
 
-        <div className="nameFields">
-          <div className="names">
-            <AntType
-              text="Address"
-              fontSize={5}
-              fontWeight={true}
-              color="#1D1C1C"
-            />
-            <AntInput
-              placeholder="10 brown street"
-              setUserInfo={setUserInfo}
-              value="homeAddress"
-            />
-          </div>
-        </div>
+      <div className="nameFields">
         <div className="names">
           <AntType
-            text="Appartment, Suite etc"
+            text="Address"
             fontSize={5}
             fontWeight={true}
             color="#1D1C1C"
           />
           <AntInput
-            placeholder="Suite No 302"
+            placeholder="10 brown street"
             setUserInfo={setUserInfo}
-            value="appartment"
+            value="homeAddress"
           />
         </div>
-        <div className="nameFields">
-          <div className="zip">
-            <AntType
-              text="Zip Code"
-              fontSize={5}
-              fontWeight={true}
-              color="#1D1C1C"
-            />
-            <AntInput
-              regex={/^[0-9]+$/}
-              placeholder="416-555-000"
-              setUserInfo={setUserInfo}
-              value="zip"
-            />
-          </div>
-          <div className="city">
-            <AntType
-              text="City"
-              fontSize={5}
-              fontWeight={true}
-              color="#1D1C1C"
-            />
-            <AntInput
-              regex={/^[A-Za-z]+$/}
-              placeholder="555-416-000"
-              setUserInfo={setUserInfo}
-              value="city"
-            />
-          </div>
-          <div className="state">
-            <AntType
-              text="State / Province"
-              fontSize={5}
-              fontWeight={true}
-              color="#1D1C1C"
-            />
-            <AntInput
-              regex={/^[A-Za-z]+$/}
-              placeholder="Sindh"
-              setUserInfo={setUserInfo}
-              value="province"
-            />
-          </div>
+      </div>
+      <div className="names">
+        <AntType
+          text="Appartment, Suite etc"
+          fontSize={5}
+          fontWeight={true}
+          color="#1D1C1C"
+        />
+        <AntInput
+          placeholder="Suite No 302"
+          setUserInfo={setUserInfo}
+          value="appartment"
+        />
+      </div>
+      <div className="nameFields">
+        <div className="zip">
+          <AntType
+            text="Zip Code"
+            fontSize={5}
+            fontWeight={true}
+            color="#1D1C1C"
+          />
+          <AntInput
+            regex={/^[0-9]+$/}
+            placeholder="416-555-000"
+            setUserInfo={setUserInfo}
+            value="zip"
+          />
         </div>
-        <div className="nameFields">
-          <div className="names">
-            <AntType
-              text="How did you hear about us ?"
-              fontSize={5}
-              fontWeight={true}
-              color="#1D1C1C"
-            />
+        <div className="city">
+          <AntType text="City" fontSize={5} fontWeight={true} color="#1D1C1C" />
+          <AntInput
+            regex={/^[a-zA-Z_ ]*$/}
+            placeholder="karachi"
+            setUserInfo={setUserInfo}
+            value="city"
+          />
+        </div>
+        <div className="state">
+          <AntType
+            text="State / Province"
+            fontSize={5}
+            fontWeight={true}
+            color="#1D1C1C"
+          />
+          <AntInput
+            regex={/^[a-zA-Z_ ]*$/}
+            placeholder="Sindh"
+            setUserInfo={setUserInfo}
+            value="province"
+          />
+        </div>
+      </div>
+      <div className="nameFields">
+        <div className="names">
+          <AntType
+            text="How did you hear about us ?"
+            fontSize={5}
+            fontWeight={true}
+            color="#1D1C1C"
+          />
+          <Form.Item name="hearAboutUs">
             <AntSelect
               placeholder="Make a Selection"
               setUserInfo={setUserInfo}
               valueName="hearAboutUs"
             />
-          </div>
+          </Form.Item>
         </div>
-        <div className="nameFields">
-          <div className="textAreaWidth">
-            <AntType
-              text="Customer notes"
-              fontSize={5}
-              fontWeight={true}
-              color="#1D1C1C"
-            />
-            <TextArea
-              // style={{ width: "100%", maxWidth: "100%" }}
+      </div>
+      <div className="nameFields">
+        <div className="textAreaWidth">
+          <AntType
+            text="Customer notes"
+            fontSize={5}
+            fontWeight={true}
+            color="#1D1C1C"
+          />
 
+          {/* name property in Form.Item is a unique identifier yahan pe notes denoted kr rha hy meri text area ko   */}
+          <Form.Item name="notes">
+            <TextArea
               rows={6}
               onChange={(e) => setUserInfo(e.target.value, "notes")}
             />
-          </div>
+          </Form.Item>
         </div>
       </div>
     </div>

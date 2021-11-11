@@ -1,20 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { Form, Layout } from "antd";
-import ProfileHeadSection from "../../Component/ProfileHeadSection/ProfileHeadSection";
+import React, { useState } from "react";
+import { Form, Layout, Button } from "antd";
 import AntType from "../../Component/AntTypo/AntType";
 import "./Customer.css";
 import PrimaryCustomer from "../../Component/PrimaryCustomer/PrimaryCustomer";
 import AdditionalCustomer from "../../Component/AdditionalCustomer/AdditionalCustomer";
 import AddCompany from "../../Component/AddCompany/AddCompany";
 import BillingAddress from "../../Component/BillingAddress/BillingAddress";
-import AntButton from "../../Component/AntButton/AntButton";
 import { firestore } from "../../Firebase/Firebase";
-
-import { useForm } from "antd/lib/form/Form";
+import { notification } from "antd";
 
 const { Content } = Layout;
 
 const Customer = () => {
+  const [form1] = Form.useForm();
+
   const [form, setForm] = useState({
     accountManager: "",
     firstName: "",
@@ -44,71 +43,100 @@ const Customer = () => {
     setForm({ ...form, [value]: userInfo });
   };
 
-  const addCustomer = async () => {
-    try {
-      const {
+  const onFinish = async (values) => {
+    console.log("Success:", values);
+    const {
+      accountManager,
+      firstName,
+      lastName,
+      emailAddress,
+      homeNumber,
+      mobileNumber,
+      addCustomerFirstName,
+      addCustomerLastName,
+      addCustomerEmailAddress,
+      addCustomerMobileNumber,
+      addCustomerHomeNumber,
+      companyName,
+      companyEmailAddress,
+      companyMobileNumber,
+      companyOfficeNumber,
+      homeAddress,
+      appartment,
+      zip,
+      province,
+      city,
+      hearAboutUs,
+      notes,
+    } = form;
+    const userObj = {
+      userDetails: {
         accountManager,
         firstName,
         lastName,
         emailAddress,
         homeNumber,
         mobileNumber,
+      },
+      aditionalCustomerDetails: {
         addCustomerFirstName,
         addCustomerLastName,
         addCustomerEmailAddress,
         addCustomerMobileNumber,
         addCustomerHomeNumber,
+      },
+      companyDetails: {
         companyName,
         companyEmailAddress,
         companyMobileNumber,
         companyOfficeNumber,
+      },
+      userAddress: {
         homeAddress,
         appartment,
         zip,
         province,
         city,
-        hearAboutUs,
+      },
+      customerFeedback: {
         notes,
-      } = form;
-      const userObj = {
-        userDetails: {
-          accountManager,
-          firstName,
-          lastName,
-          emailAddress,
-          homeNumber,
-          mobileNumber,
-        },
-        aditionalCustomerDetails: {
-          addCustomerFirstName,
-          addCustomerLastName,
-          addCustomerEmailAddress,
-          addCustomerMobileNumber,
-          addCustomerHomeNumber,
-        },
-        companyDetails: {
-          companyName,
-          companyEmailAddress,
-          companyMobileNumber,
-          companyOfficeNumber,
-        },
-        userAddress: {
-          homeAddress,
-          appartment,
-          zip,
-          province,
-          city,
-        },
-        customerFeedback: {
-          notes,
-          hearAboutUs,
-        },
-      };
-      console.log("before ", userObj);
-      await firestore.collection("customer").add(userObj);
-      alert("Submitted Successfully");
-    } catch (error) {
-      console.log(error);
+        hearAboutUs,
+      },
+    };
+    console.log("before ", userObj);
+    await firestore.collection("customer").add(userObj);
+    openNotification(
+      "bottomLeft",
+      "Form submitted successfully.",
+      "Form Submitted"
+    );
+    form1.resetFields();
+  };
+
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+    openNotification(
+      "bottomLeft",
+      "Please fill out the field correctly.",
+      "Field Error"
+    );
+  };
+
+  const openNotification = (placement, text, status) => {
+    if (status === "Field Error") {
+      notification.error({
+        message: `Notification ${status}`,
+        description: text,
+        placement,
+        duration: 2,
+      });
+    } else {
+      notification.success({
+        message: `Notification ${status}`,
+        description: text,
+        placement,
+        duration: 2,
+      });
     }
   };
 
@@ -123,13 +151,15 @@ const Customer = () => {
             color="#1D1C1C"
           />
         </div>
-        <PrimaryCustomer setUserInfo={setUserInfo} />
-        <AdditionalCustomer setUserInfo={setUserInfo} />
-        <AddCompany setUserInfo={setUserInfo} />
-        <BillingAddress setUserInfo={setUserInfo} />
-        <div onClick={addCustomer}>
-          <AntButton background="#00818F" color="#ffff" text="Submit" />
-        </div>
+        <Form form={form1} onFinish={onFinish} onFinishFailed={onFinishFailed}>
+          <PrimaryCustomer setUserInfo={setUserInfo} />
+          <AdditionalCustomer setUserInfo={setUserInfo} />
+          <AddCompany setUserInfo={setUserInfo} />
+          <BillingAddress setUserInfo={setUserInfo} />
+          <Button htmlType="submit" size="large">
+            Submit
+          </Button>
+        </Form>
       </Content>
     </div>
   );

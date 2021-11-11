@@ -44,7 +44,7 @@ const UserInfoFields = ({
           />
           <AntInput
             placeholder={isCompany ? "Company Name" : "First Name"}
-            regex={/^[A-Za-z]+$/}
+            regex={/^[a-zA-Z_ ]*$/}
             isRequired={requiredUser}
             setUserInfo={setUserInfo}
             value={

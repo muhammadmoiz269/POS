@@ -3,11 +3,13 @@ import AntInput from "../AntInput/AntInput";
 import AntSelect from "../AntSelect/AntSelect";
 import AntType from "../AntTypo/AntType";
 import UserInfoFields from "../UserInfoFields/UserInfoFields";
+import { Input, Form } from "antd";
+
 import "./PrimaryCustomer.css";
 
 const PrimaryCustomer = ({ setUserInfo }) => {
   return (
-    <div className="primaryCustomer">
+    <div>
       <AntType
         text="Primray Customer"
         fontSize={4}
@@ -21,11 +23,13 @@ const PrimaryCustomer = ({ setUserInfo }) => {
           fontWeight={true}
           color="#1D1C1C"
         />
-        <AntSelect
-          placeholder="Make a Selection"
-          setUserInfo={setUserInfo}
-          valueName="accountManager"
-        />
+        <Form.Item name="accountManager">
+          <AntSelect
+            placeholder="Make a Selection"
+            setUserInfo={setUserInfo}
+            valueName="accountManager"
+          />
+        </Form.Item>
       </div>
       <div>
         <AntType

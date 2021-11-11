@@ -12,37 +12,34 @@ const AntInput = ({
 }) => {
   return (
     <div>
-      <Form>
-        <Form.Item
-          label={isRequired && value}
-          name={value}
-          rules={[
-            {
-              required: isRequired,
-              message: `Please input your ${value.toLowerCase()}!`,
-            },
-            {
-              pattern: regex,
-              message: `Please enter a valid ${value.toLowerCase()}`,
-            },
-          ]}
-        >
-          <Input
-            name={value}
-            placeholder={placeholder}
-            size="middle"
-            onChange={(e) =>
-              setUserInfo ? (
-                setUserInfo(e.target.value, value)
-              ) : setProductInfo ? (
-                setProductInfo(e.target.value, value)
-              ) : (
-                <></>
-              )
-            }
-          />
-        </Form.Item>
-      </Form>
+      <Form.Item
+        label={isRequired && value}
+        name={value}
+        rules={[
+          {
+            required: isRequired,
+            message: `This is a required field`,
+          },
+          {
+            pattern: regex,
+            message: `Please enter  valid data`,
+          },
+        ]}
+      >
+        <Input
+          placeholder={placeholder}
+          size="middle"
+          onChange={(e) =>
+            setUserInfo ? (
+              setUserInfo(e.target.value, value)
+            ) : setProductInfo ? (
+              setProductInfo(e.target.value, value)
+            ) : (
+              <></>
+            )
+          }
+        />
+      </Form.Item>
     </div>
   );
 };

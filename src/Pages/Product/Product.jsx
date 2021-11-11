@@ -1,16 +1,18 @@
 import React, { useState } from "react";
-import { Layout } from "antd";
+import { Layout, Button, Form } from "antd";
 import AntType from "../../Component/AntTypo/AntType";
 import "./Product.css";
 import { Row, Col } from "antd";
-import AntButton from "../../Component/AntButton/AntButton";
-import { Alert } from "antd";
-import { storage, serverTimeStamp, firestore } from "./../../Firebase/Firebase";
+import { storage, firestore } from "./../../Firebase/Firebase";
 import ProductSampleForm from "../../Component/ProductSampleForm/ProductSampleForm";
 import ProductManufacturerSection from "../../Component/ProductManufacturerSection/ProductManufacturerSection";
+import { notification } from "antd";
+
 const { Content } = Layout;
 
 const Product = () => {
+  const [form1] = Form.useForm();
+
   const [form, setForm] = useState({
     manufacturer: "",
     productImage: "",
@@ -25,64 +27,91 @@ const Product = () => {
   const setProductInfo = (userInfo, value) => {
     setForm({ ...form, [value]: userInfo });
   };
-  const addProduct = async () => {
-    try {
-      const {
-        manufacturer,
-        productImage,
-        species,
-        additionalSpecies,
-        color,
-        additionalColor,
-        sku,
-        retailPrice,
-      } = form;
+  const onFinish = async (values) => {
+    console.log("Success:", values);
+    const {
+      manufacturer,
+      productImage,
+      species,
+      additionalSpecies,
+      color,
+      additionalColor,
+      sku,
+      retailPrice,
+    } = form;
 
-      var imageRef = storage.child(`products/img-${productImage.uid}`);
-      var fileListener = imageRef.put(productImage);
+    var imageRef = storage.child(`products/img-1}`);
+    var fileListener = imageRef.put(productImage);
 
-      //file listener takes 4 argumnets
-      //fileListener.on(event type, cb file state, cb error, cd will trigger after file upload)
-      fileListener.on(
-        "state_changed",
-        (snapshot) => {
-          var progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log("Upload is " + progress + " % done");
-        },
-        (error) => {
-          console.log(error);
-        },
-        async () => {
-          //will trigger after completion
-          var downloadURL = await imageRef.getDownloadURL();
+    //file listener takes 4 argumnets
+    //fileListener.on(event type, cb file state, cb error, cd will trigger after file upload)
+    fileListener.on(
+      "state_changed",
+      (snapshot) => {
+        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log("Upload is " + progress + " % done");
+      },
+      (error) => {
+        console.log(error);
+      },
+      async () => {
+        //will trigger after completion
+        var downloadURL = await imageRef.getDownloadURL();
 
-          //modify productObj with coverPhoto URL and created At
-          const userObj = {
-            productDetails: {
-              manufacturer,
-              productImage: downloadURL,
-              species,
-              additionalSpecies,
-              color,
-              additionalColor,
-              sku,
-              retailPrice,
-            },
-          };
+        //modify productObj with coverPhoto URL and created At
+        const userObj = {
+          productDetails: {
+            manufacturer,
+            productImage: downloadURL,
+            species,
+            additionalSpecies,
+            color,
+            additionalColor,
+            sku,
+            retailPrice,
+          },
+        };
 
-          //create doc at firestore
-          await firestore.collection("products").add(userObj);
-          console.log(userObj);
-          alert("Submitted Successfully");
-        }
-      );
+        //create doc at firestore
+        await firestore.collection("products").add(userObj);
 
-      // console.log("after");
-    } catch (error) {
-      console.log(error);
+        console.log(userObj);
+        openNotification(
+          "bottomLeft",
+          "Form submitted successfully.",
+          "Form Submitted"
+        );
+        form1.resetFields();
+      }
+    );
+  };
+
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+    openNotification(
+      "bottomLeft",
+      "Please fill out the field correctly.",
+      "Field Error"
+    );
+  };
+  const openNotification = (placement, text, status) => {
+    if (status === "Field Error") {
+      notification.error({
+        message: `Notification ${status}`,
+        description: text,
+        placement,
+        duration: 2,
+      });
+    } else {
+      notification.success({
+        message: `Notification ${status}`,
+        description: text,
+        placement,
+        duration: 2,
+      });
     }
   };
+
   return (
     <Content className="customerContent">
       <div>
@@ -94,17 +123,28 @@ const Product = () => {
         />
       </div>
 
-      <Row>
-        <Col className="productLeftSection" xs={24} md={24} lg={10}>
-          <ProductManufacturerSection setProductInfo={setProductInfo} />
-        </Col>
-        <Col className="productRightSection" xs={24} md={24} lg={14}>
-          <ProductSampleForm setProductInfo={setProductInfo} />
-          <div onClick={addProduct}>
-            <AntButton background="#00818F" color="#ffff" text="Add Sample" />
-          </div>
-        </Col>
-      </Row>
+      <Form form={form1} onFinish={onFinish} onFinishFailed={onFinishFailed}>
+        <Row>
+          <Col className="productLeftSection" xs={24} md={24} lg={10}>
+            <ProductManufacturerSection setProductInfo={setProductInfo} />
+          </Col>
+          <Col className="productRightSection" xs={24} md={24} lg={14}>
+            <ProductSampleForm setProductInfo={setProductInfo} />
+            <Button
+              size="large"
+              type="primary"
+              htmlType="submit"
+              style={{
+                background: "#00818F",
+                color: "#ffff",
+                border: "1px solid #00818F",
+              }}
+            >
+              Add Sample
+            </Button>
+          </Col>
+        </Row>
+      </Form>
     </Content>
   );
 };

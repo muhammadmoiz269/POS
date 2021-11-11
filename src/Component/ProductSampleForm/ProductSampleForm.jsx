@@ -4,22 +4,25 @@ import AntInput from "../AntInput/AntInput";
 import AntSelect from "../AntSelect/AntSelect";
 import AntType from "../AntTypo/AntType";
 import "./ProductSampleForm.css";
+import { Input, Form } from "antd";
 
 const ProductSampleForm = ({ setProductInfo }) => {
   return (
     <div className="productFields">
-      <div className="forSpacing">
+      <div>
         <AntType
           text="Select Species"
           fontSize={5}
           fontWeight={true}
           color="#1D1C1C"
         />
-        <AntSelect
-          placeholder="Make a Selection"
-          setProductInfo={setProductInfo}
-          valueName="species"
-        />
+        <Form.Item name="accountManager">
+          <AntSelect
+            placeholder="Make a Selection"
+            setProductInfo={setProductInfo}
+            valueName="species"
+          />
+        </Form.Item>
         <div>
           <AdditionalCustomer
             isProduct="true"
@@ -34,7 +37,7 @@ const ProductSampleForm = ({ setProductInfo }) => {
             color="#1D1C1C"
           />
           <AntInput
-            regex={/^[A-Za-z]+$/}
+            regex={/^[a-zA-Z_ ]*$/}
             placeholder="Blue"
             setProductInfo={setProductInfo}
             value="color"

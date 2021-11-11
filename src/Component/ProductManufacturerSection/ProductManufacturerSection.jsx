@@ -5,6 +5,8 @@ import AntSelect from "../AntSelect/AntSelect";
 import AntType from "../AntTypo/AntType";
 import AntUpload from "../AntUpload/AntUpload";
 import Paragraph from "../Paragraph/Paragraph";
+import { Input, Form } from "antd";
+
 import "./ProductManufacturerSection.css";
 const ProductManufacturerSection = ({ setProductInfo }) => {
   return (
@@ -18,16 +20,17 @@ const ProductManufacturerSection = ({ setProductInfo }) => {
             color="#1D1C1C"
           />
           <AntInput
-            regex={/^[A-Za-z]+$/}
+            regex={/^[a-zA-Z_ ]*$/}
             placeholder="manufacturer"
             setProductInfo={setProductInfo}
             value="manufacturer"
           />
 
           <div className="uploadImage">
-            <div>
+            <Form.Item name="upload">
               <AntUpload setProductInfo={setProductInfo} value="productImage" />
-            </div>
+            </Form.Item>
+
             <div>
               <AntType
                 text="Upload Manufacturer logo"
