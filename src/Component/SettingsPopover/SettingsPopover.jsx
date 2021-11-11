@@ -5,36 +5,28 @@ import Navbarinfo from "../Navbarinfo/Navbarinfo";
 import Paragraph from "../Paragraph/Paragraph";
 import AntButton from "../AntButton/AntButton";
 import { Link } from "react-router-dom";
-import "./ProfileCard.css";
+import "./SettingsPopover.css";
 
-const icon = <UpOutlined style={{ color: "#ffff" }} />;
+const icon = (
+  <DownOutlined style={{ color: "#C95B1D", paddingTop: "0.5rem" }} />
+);
 
 const names = [
   {
-    text: "Toronto",
+    text: "Location Deatils",
   },
   {
-    text: "Alberta",
+    text: "User",
   },
   {
-    text: "Profile",
+    text: "Contact Information",
   },
   {
-    text: "Account",
-  },
-  {
-    text: "LogOut",
-    display: "flex",
-
-    icon1: (
-      <LogoutOutlined
-        style={{ color: "#004d8b", fontSize: "1.2rem", paddingRight: "0.5rem" }}
-      />
-    ),
+    text: "Delete Account",
   },
 ];
 
-const ProfileCard = () => {
+const SettingsPopover = ({ text, children }) => {
   const [visible, setvisible] = useState(false);
 
   const hide = () => {
@@ -45,46 +37,30 @@ const ProfileCard = () => {
     setvisible(visible);
   };
   return (
-    <div style={{ borderRadius: "100px" }}>
+    <div className="settingPopOver">
       <Popover
         content={
-          <div className="ProfileBox">
-            <div className="UpperSection">
-              <div className="flex">
-                <Navbarinfo color="#ffff" icon={icon} />
-              </div>
-              <div className="profileButton">
-                <AntButton
-                  background="#ffff"
-                  color="#00818F"
-                  text="Owner"
-                  padding="0.2rem 0.5rem"
-                />
-              </div>
-            </div>
-            <div className="LowerSection">
+          <div className="SettingProfileBox">
+            <div className="SettingLowerSection">
               {names.map((item) => {
                 return item.text === "Profile" ? (
                   <Link to="/profile">
                     <Paragraph
-                      display={item.display ? item.display : ""}
                       text={item.text}
-                      icon={item.icon1 ? item.icon1 : <></>}
-                      fontSize="1rem"
+                      fontSize="0.9rem"
                       color="gray"
                       borderBottom="1px solid #DCDCDC"
-                      padding="0.3rem 0.5rem"
+                      padding="0.5rem 0.5rem"
                     />
                   </Link>
                 ) : (
                   <Paragraph
                     display={item.display ? item.display : ""}
                     text={item.text}
-                    icon={item.icon1 ? item.icon1 : <></>}
-                    fontSize="1rem"
+                    fontSize="0.9rem"
                     color="gray"
                     borderBottom="1px solid #DCDCDC"
-                    padding="0.3rem 0.5rem"
+                    padding="0.5rem 0.5rem"
                   />
                 );
               })}
@@ -95,10 +71,11 @@ const ProfileCard = () => {
         visible={visible}
         onVisibleChange={handleVisibleChange}
       >
-        <DownOutlined />
+        {children}
+        {icon}
       </Popover>
     </div>
   );
 };
 
-export default ProfileCard;
+export default SettingsPopover;
