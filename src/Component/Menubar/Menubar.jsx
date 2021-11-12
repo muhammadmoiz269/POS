@@ -70,7 +70,9 @@ const Menubar = ({ showDrawer, onClose, visible }) => {
           icon={<CopyOutlined className="icon" />}
           title="Quotes"
         >
-          <Menu.Item key="6">Build a Quote</Menu.Item>
+          <Menu.Item key="6">
+            <Link to="/quote">Build a Quote</Link>
+          </Menu.Item>
           <Menu.Item key="7">View all Quote</Menu.Item>
         </SubMenu>
         <Menu.Item key="8" icon={<FolderOpenOutlined className="icon" />}>

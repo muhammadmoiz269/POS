@@ -1,0 +1,8 @@
+.quoteContent {
+  padding: 1rem 2rem;
+  background: #ffff;
+  border-bottom: 1px solid gray;
+}
+.quoteHeadSection {
+  border-bottom: 1px solid #dcdcdc;
+}
