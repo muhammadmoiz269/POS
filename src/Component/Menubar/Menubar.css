@@ -5,6 +5,21 @@
   flex-flow: column;
   padding-top: 2rem;
 }
+.ant-menu-item-selected::before {
+  content: "";
+  width: 15px;
+  height: 100%;
+  background-color: #004d8b;
+
+  position: absolute;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  left: 0;
+}
+.ant-menu-item {
+  background: none !important;
+}
+
 .menubr {
   width: 205px;
   height: 100%;

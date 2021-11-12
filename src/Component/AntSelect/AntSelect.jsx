@@ -17,7 +17,13 @@ function onSearch(val) {
   // console.log("search:", val);
 }
 
-const AntSelect = ({ placeholder, setUserInfo, valueName, setProductInfo }) => {
+const AntSelect = ({
+  placeholder,
+  setUserInfo,
+  valueName,
+  setProductInfo,
+  onNav,
+}) => {
   function onChange(value) {
     if (setUserInfo) {
       setUserInfo(value, valueName);
@@ -29,7 +35,7 @@ const AntSelect = ({ placeholder, setUserInfo, valueName, setProductInfo }) => {
   return (
     <div>
       <Select
-        className="Searchbr"
+        className={onNav ? "navSearchbr" : "Searchbr"}
         showSearch={true}
         placeholder={placeholder}
         optionFilterProp="children"

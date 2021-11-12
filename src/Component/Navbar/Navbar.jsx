@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
     <Row style={{ width: "100%" }}>
       <Col className="flex2" span={20}>
-        <AntSelect placeholder="Search" />
+        <AntSelect placeholder="Search" onNav="true" />
 
         <Navbarinfo />
       </Col>

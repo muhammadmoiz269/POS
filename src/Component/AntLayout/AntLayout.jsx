@@ -1,13 +1,10 @@
 import React from "react";
-
 import { Layout } from "antd";
 import Menubar from "../Menubar/Menubar";
-
-import { MenuOutlined } from "@ant-design/icons";
 import Navbar from "../Navbar/Navbar";
-
 import { Row, Col } from "antd";
 import Paragraph from "../Paragraph/Paragraph";
+import "./AntLayout.css";
 const { Header, Content } = Layout;
 
 const AntLayout = ({ children }) => {
@@ -18,7 +15,6 @@ const AntLayout = ({ children }) => {
 
         <Layout style={{ marginLeft: "205px" }}>
           <Header className="head">
-            <MenuOutlined />
             <Navbar />
           </Header>
 
