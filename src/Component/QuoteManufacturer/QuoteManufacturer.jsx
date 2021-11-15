@@ -34,8 +34,8 @@ const QuoteManufacturer = () => {
           color="gray"
         />
       </div>
-      <Row className="verticalGap">
-        <Col xl={14} lg={14} md={12} sm={24} xs={24}>
+      <Row className="verticalGap" gutter={[24, 24]}>
+        <Col xl={14} lg={14} md={24} className="gutter-row">
           <Row gutter={[16, 16]}>
             {product.map((items) => {
               return (
@@ -53,7 +53,7 @@ const QuoteManufacturer = () => {
             })}
           </Row>
         </Col>
-        <Col xl={10} lg={10} md={12} sm={24} xs={24}>
+        <Col xl={10} lg={10} md={24}>
           <CustomerDetailBox />
         </Col>
       </Row>
