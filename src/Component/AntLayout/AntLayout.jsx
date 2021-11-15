@@ -21,6 +21,7 @@ const AntLayout = ({ children }) => {
           {children}
         </Layout>
       </Layout>
+
       <div>
         <Row style={{ height: "50px" }}>
           <Col className="footerSection" xs={6} md={12} lg={16}>

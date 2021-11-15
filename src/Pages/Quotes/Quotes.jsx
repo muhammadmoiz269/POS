@@ -11,12 +11,22 @@ const Quotes = () => {
     <div>
       <Content className="quoteContent">
         <div className="quoteHeadSection">
-          <AntType
-            text="Build a Quote"
-            fontSize={1}
-            fontWeight={true}
-            color="#1D1C1C"
-          />
+          <div>
+            <AntType
+              text="Build a Quote"
+              fontSize={1}
+              fontWeight={true}
+              color="#1D1C1C"
+            />
+          </div>
+          <div className="quoteNumber">
+            <AntType
+              text="Quote #: xxxxxxxxx"
+              fontSize={5}
+              fontWeight={true}
+              color="gray"
+            />
+          </div>
         </div>
         {isRender ? <BuildQuote /> : <QuoteManufacturer />}
       </Content>
