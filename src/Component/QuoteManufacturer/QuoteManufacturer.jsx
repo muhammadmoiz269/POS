@@ -23,7 +23,11 @@ const product = [
   { title: "Add a Customer", image: logo3 },
 ];
 
-const QuoteManufacturer = () => {
+const QuoteManufacturer = ({ next }) => {
+  const setNextPage = () => {
+    next();
+    console.log("press");
+  };
   return (
     <div>
       <div className="verticalGap">
@@ -57,7 +61,7 @@ const QuoteManufacturer = () => {
           <CustomerDetailBox />
         </Col>
       </Row>
-      <div className="verticalGap">
+      <div className="verticalGap" onClick={setNextPage}>
         <AntButton
           background="#00818F"
           color="#ffff"

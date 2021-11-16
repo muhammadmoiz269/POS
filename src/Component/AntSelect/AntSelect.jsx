@@ -23,6 +23,7 @@ const AntSelect = ({
   valueName,
   setProductInfo,
   onNav,
+  next,
 }) => {
   function onChange(value) {
     if (setUserInfo) {
@@ -32,6 +33,10 @@ const AntSelect = ({
       setProductInfo(value, valueName);
     }
   }
+  const setNextPage = () => {
+    next();
+    console.log("press");
+  };
   return (
     <div>
       <Select
@@ -39,7 +44,7 @@ const AntSelect = ({
         showSearch={true}
         placeholder={placeholder}
         optionFilterProp="children"
-        onChange={onChange}
+        onChange={next ? setNextPage : onChange}
         onFocus={onFocus}
         onBlur={onBlur}
         onSearch={onSearch}

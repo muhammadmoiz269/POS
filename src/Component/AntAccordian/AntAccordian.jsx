@@ -33,7 +33,7 @@ const AntAccordian = ({ items }) => {
             text={items.title}
             fontSize={5}
             fontWeight={true}
-            color="#00818F"
+            color="black"
             justifyContent="space-between"
             icon={<PlusOutlined style={{ color: "#C95B1D" }} />}
             margin="0rem 0.5em"

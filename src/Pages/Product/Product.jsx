@@ -4,9 +4,11 @@ import AntType from "../../Component/AntTypo/AntType";
 import "./Product.css";
 import { Row, Col } from "antd";
 import { storage, firestore } from "./../../Firebase/Firebase";
+import firebase from "../../Firebase/Firebase";
 import ProductSampleForm from "../../Component/ProductSampleForm/ProductSampleForm";
 import ProductManufacturerSection from "../../Component/ProductManufacturerSection/ProductManufacturerSection";
 import { notification } from "antd";
+import { v4 as uuid } from "uuid";
 
 const { Content } = Layout;
 
@@ -26,9 +28,9 @@ const Product = () => {
 
   const setProductInfo = (userInfo, value) => {
     setForm({ ...form, [value]: userInfo });
+    console.log("************", value);
   };
   const onFinish = async (values) => {
-    console.log("Success:", values);
     const {
       manufacturer,
       productImage,
@@ -40,15 +42,21 @@ const Product = () => {
       retailPrice,
     } = form;
 
-    var imageRef = storage.child(`products/img-1}`);
-    var fileListener = imageRef.put(productImage);
+    var imageRef = storage.child(`products/${uuid()}`);
+    var fileListener = imageRef.put(productImage, {
+      contentType: `${productImage.type}`,
+      firebaseStorageDownloadTokens: uuid(),
+    });
+    console.log("product image is", productImage);
 
     //file listener takes 4 argumnets
     //fileListener.on(event type, cb file state, cb error, cd will trigger after file upload)
     fileListener.on(
       "state_changed",
-      (snapshot) => {
-        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      async (snapshot) => {
+        console.log("********", snapshot);
+        var progress =
+          (await (snapshot.bytesTransferred / snapshot.totalBytes)) * 100;
         console.log("Upload is " + progress + " % done");
       },
       (error) => {

@@ -7,23 +7,9 @@ import QuoteManufacturer from "../../Component/QuoteManufacturer/QuoteManufactur
 import "./Quotes.css";
 import { Steps, Button, message } from "antd";
 import ManufacturerDetails from "../../Component/ManufacturerDetails/ManufacturerDetails";
+import ManufacturerMeasurement from "../../Component/ManufacturerMeasurement/ManufacturerMeasurement";
 
 const { Step } = Steps;
-
-const steps = [
-  {
-    title: "First",
-    content: <BuildQuote />,
-  },
-  {
-    title: "Second",
-    content: <QuoteManufacturer />,
-  },
-  {
-    title: "third",
-    content: <ManufacturerDetails />,
-  },
-];
 
 const Quotes = () => {
   const [current, setCurrent] = React.useState(0);
@@ -33,8 +19,26 @@ const Quotes = () => {
   };
 
   const prev = () => {
-    setCurrent(current - 1);
+    setCurrent(2);
   };
+  const steps = [
+    {
+      title: "First",
+      content: <BuildQuote next={next} />,
+    },
+    {
+      title: "Second",
+      content: <QuoteManufacturer next={next} />,
+    },
+    {
+      title: "third",
+      content: <ManufacturerDetails next={next} />,
+    },
+    {
+      title: "fourth",
+      content: <ManufacturerMeasurement prev={prev} />,
+    },
+  ];
   return (
     <div>
       <Content className="quoteContent">
@@ -58,26 +62,6 @@ const Quotes = () => {
         </div>
         <>
           <div className="steps-content">{steps[current].content}</div>
-          <div className="steps-action" style={{ marginTop: "1rem" }}>
-            {current < steps.length - 1 && (
-              <Button type="primary" onClick={() => next()}>
-                Save
-              </Button>
-            )}
-            {current === steps.length - 1 && (
-              <Button
-                type="primary"
-                onClick={() => message.success("Processing complete!")}
-              >
-                Done
-              </Button>
-            )}
-            {current > 0 && (
-              <Button style={{ margin: "0 8px" }} onClick={() => prev()}>
-                Previous
-              </Button>
-            )}
-          </div>
         </>
       </Content>
     </div>

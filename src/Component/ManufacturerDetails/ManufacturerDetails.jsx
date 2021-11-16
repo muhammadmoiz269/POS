@@ -79,7 +79,11 @@ const productItems = [
   },
 ];
 
-const ManufacturerDetails = () => {
+const ManufacturerDetails = ({ next }) => {
+  const setNextPage = () => {
+    next();
+    console.log("press");
+  };
   return (
     <div>
       <Row className="verticalGap" gutter={[24, 24]}>
@@ -87,12 +91,19 @@ const ManufacturerDetails = () => {
           {productItems.map((items) => {
             return <AntAccordian items={items} />;
           })}
+          <AntType
+            text="Clear all filters"
+            fontSize={5}
+            fontWeight={true}
+            color="#00818F"
+            margin="0rem 0.5em"
+          />
         </Col>
         <Col xl={10} lg={10} md={24}>
           <CustomerDetailBox />
         </Col>
       </Row>
-      <div className="verticalGap">
+      <div className="verticalGap" onClick={setNextPage}>
         <AntButton
           background="#00818F"
           color="#ffff"
