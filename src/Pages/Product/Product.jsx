@@ -28,7 +28,6 @@ const Product = () => {
 
   const setProductInfo = (userInfo, value) => {
     setForm({ ...form, [value]: userInfo });
-    console.log("************", value);
   };
   const onFinish = async (values) => {
     const {

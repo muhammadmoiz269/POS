@@ -1,10 +1,12 @@
-import { Col, Row } from "antd";
 import React from "react";
+import { Row, Col, Button } from "antd";
+
 import AntButton from "../AntButton/AntButton";
 import AntType from "../AntTypo/AntType";
 import CustomerDetailBox from "../CustomerDetailBox/CustomerDetailBox";
 
 import AntInput from "../AntInput/AntInput";
+import "./ManufacturerMeasurement.css";
 
 import {
   DownOutlined,
@@ -14,7 +16,10 @@ import {
 } from "@ant-design/icons";
 import AddMeasurement from "../AddMeasurement/AddMeasurement";
 
-const ManufacturerMeasurement = () => {
+const ManufacturerMeasurement = ({ prev }) => {
+  const setPrevPage = () => {
+    prev();
+  };
   return (
     <div>
       <div className="verticalGap">
@@ -39,7 +44,7 @@ const ManufacturerMeasurement = () => {
             </Col>
             <Col xl={10} lg={10} md={24}>
               <AntType
-                text="Description"
+                text="Description of the items"
                 fontSize={5}
                 fontWeight={true}
                 color="#004D8B"
@@ -75,13 +80,30 @@ const ManufacturerMeasurement = () => {
               isAddAnother="true"
             />
           </Row>
-          <div className="verticalGap">
-            <AntButton
-              background="#00818F"
-              color="#ffff"
-              text="Save"
-              padding="0.7rem 5rem"
-            />
+          <div className="btnGap">
+            <Button
+              onClick={setPrevPage}
+              type="primary"
+              htmlType="submit"
+              style={{
+                background: "#00818F",
+                color: "#ffff",
+                border: "1px solid #00818F",
+              }}
+            >
+              Back
+            </Button>
+            <Button
+              type="primary"
+              htmlType="submit"
+              style={{
+                background: "#00818F",
+                color: "#ffff",
+                border: "1px solid #00818F",
+              }}
+            >
+              Save
+            </Button>
           </div>
         </Col>
         <Col xl={10} lg={10} md={24}>

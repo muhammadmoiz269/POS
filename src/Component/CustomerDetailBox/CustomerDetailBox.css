@@ -22,6 +22,11 @@
 .spacing {
   padding: 0.5rem 0rem;
 }
+@media only screen and (max-device-width: 1024px) {
+  .detailBox {
+    margin-left: 0rem;
+  }
+}
 @media only screen and (max-device-width: 768px) {
   .detailBox {
     margin-left: 0rem;

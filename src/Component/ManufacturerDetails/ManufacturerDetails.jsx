@@ -1,11 +1,6 @@
 import React from "react";
 import AntType from "../AntTypo/AntType";
-import { Row, Col } from "antd";
-import ManufacturerCard from "../ManufacturerCard/ManufacturerCard";
-import logo1 from "../../assests/images/logo1.jpg";
-import logo2 from "../../assests/images/logo2.png";
-import logo3 from "../../assests/images/logo3.jpg";
-import AntButton from "../AntButton/AntButton";
+import { Row, Col, Button } from "antd";
 import "./ManufacturerDetails.css";
 import CustomerDetailBox from "../CustomerDetailBox/CustomerDetailBox";
 import AntAccordian from "../AntAccordian/AntAccordian";
@@ -79,10 +74,12 @@ const productItems = [
   },
 ];
 
-const ManufacturerDetails = ({ next }) => {
+const ManufacturerDetails = ({ next, prev }) => {
   const setNextPage = () => {
     next();
-    console.log("press");
+  };
+  const setPrevPage = () => {
+    prev();
   };
   return (
     <div>
@@ -98,19 +95,42 @@ const ManufacturerDetails = ({ next }) => {
             color="#00818F"
             margin="0rem 0.5em"
           />
+          <div className="btnGap">
+            <Button
+              onClick={setPrevPage}
+              size="large"
+              type="primary"
+              htmlType="submit"
+              style={{
+                background: "#00818F",
+                color: "#ffff",
+                border: "1px solid #00818F",
+                padding: "0.5rem 1rem",
+              }}
+            >
+              Back
+            </Button>
+
+            <Button
+              onClick={setNextPage}
+              size="large"
+              type="primary"
+              htmlType="submit"
+              style={{
+                background: "#00818F",
+                color: "#ffff",
+                border: "1px solid #00818F",
+                padding: "0.5rem 1rem",
+              }}
+            >
+              Save
+            </Button>
+          </div>
         </Col>
         <Col xl={10} lg={10} md={24}>
           <CustomerDetailBox />
         </Col>
       </Row>
-      <div className="verticalGap" onClick={setNextPage}>
-        <AntButton
-          background="#00818F"
-          color="#ffff"
-          text="Save"
-          padding="0.7rem 5rem"
-        />
-      </div>
     </div>
   );
 };

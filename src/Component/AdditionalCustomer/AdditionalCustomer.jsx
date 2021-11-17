@@ -12,7 +12,6 @@ const { Panel } = Collapse;
 const AdditionalCustomer = ({ setUserInfo, isProduct, setProductInfo }) => {
   const [iconVisible, seticonVisible] = useState(["1"]);
   function callback(key) {
-    console.log("key", key);
     seticonVisible(key);
   }
 

@@ -44,7 +44,7 @@ const Customer = () => {
   };
 
   const onFinish = async (values) => {
-    console.log("Success:", values);
+    // console.log("Success:", values);
     const {
       accountManager,
       firstName,
@@ -103,7 +103,7 @@ const Customer = () => {
         hearAboutUs,
       },
     };
-    console.log("before ", userObj);
+    // console.log("before ", userObj);
     await firestore.collection("customer").add(userObj);
     openNotification(
       "bottomLeft",

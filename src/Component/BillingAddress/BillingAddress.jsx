@@ -9,7 +9,7 @@ import { Input, Form } from "antd";
 
 const { TextArea } = Input;
 function onChange(e) {
-  console.log(`checked = ${e.target.checked}`);
+  // console.log(`checked = ${e.target.checked}`);
 }
 
 const BillingAddress = ({ setUserInfo }) => {

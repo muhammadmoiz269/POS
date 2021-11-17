@@ -17,7 +17,7 @@ const Navbar = () => {
         <Navbarinfo />
       </Col>
       <Col span={4} className="navBarImage">
-        <Antimage img={HomeImg} />
+        <Antimage img={HomeImg} height="50px" width="70px" />
       </Col>
     </Row>
   );

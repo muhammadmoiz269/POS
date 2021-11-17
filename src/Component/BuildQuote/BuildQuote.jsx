@@ -23,6 +23,7 @@ const BuildQuote = ({ next }) => {
             background="#00818F"
             color="#ffff"
             text="Add a new customer"
+            link="customer"
           />
         </div>
       </div>

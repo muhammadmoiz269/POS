@@ -8,7 +8,7 @@ import "./AntAccordian.css";
 const { Panel } = Collapse;
 
 function callback(key) {
-  console.log(key);
+  // console.log(key);
 }
 
 const text = `
@@ -17,11 +17,11 @@ const text = `
 `;
 
 const AntAccordian = ({ items }) => {
-  console.log("items are ", items.radioItem);
+  // console.log("items are ", items.radioItem);
   const [value, setValue] = React.useState(1);
 
   const onChange = (e) => {
-    console.log("radio checked", e.target.value);
+    // console.log("radio checked", e.target.value);
     setValue(e.target.value);
   };
   return (

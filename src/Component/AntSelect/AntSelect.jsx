@@ -35,7 +35,6 @@ const AntSelect = ({
   }
   const setNextPage = () => {
     next();
-    console.log("press");
   };
   return (
     <div>

@@ -26,10 +26,9 @@ const AddMeasurement = ({
 }) => {
   const [iconVisible, seticonVisible] = useState(["1"]);
   const onChange = (e) => {
-    console.log("radio checked", e.target.value);
+    // console.log("radio checked", e.target.value);
   };
   function callback(key) {
-    console.log(key);
     seticonVisible(key);
   }
   return (

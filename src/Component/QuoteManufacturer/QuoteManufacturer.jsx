@@ -1,32 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import AntType from "../AntTypo/AntType";
-import { Row, Col } from "antd";
+import { Row, Col, Button } from "antd";
 import ManufacturerCard from "../ManufacturerCard/ManufacturerCard";
-import logo1 from "../../assests/images/logo1.jpg";
-import logo2 from "../../assests/images/logo2.png";
-import logo3 from "../../assests/images/logo3.jpg";
 import AntButton from "../AntButton/AntButton";
 import "./QuoteManufacturer.css";
+
+import { Spin } from "antd";
+
+import { firestore } from "./../../Firebase/Firebase";
+
 import CustomerDetailBox from "../CustomerDetailBox/CustomerDetailBox";
 
-const product = [
-  { title: "Add a Customer", image: logo1 },
-  { title: "Add a Product", image: logo2 },
-  { title: "Add a Customer", image: logo3 },
+const QuoteManufacturer = ({ next, prev, setImageLogo }) => {
+  const [manufacturers, setManufacturers] = useState([]);
 
-  { title: "Add a Customer", image: logo1 },
-  { title: "Add a Product", image: logo2 },
-  { title: "Add a Customer", image: logo3 },
+  useEffect(() => {
+    fetchManufacturers();
+  }, []);
 
-  { title: "Add a Customer", image: logo1 },
-  { title: "Add a Product", image: logo2 },
-  { title: "Add a Customer", image: logo3 },
-];
+  const fetchManufacturers = async () => {
+    try {
+      var query = await firestore.collection("products").get();
+      var products = [];
+      query.docs.forEach((doc) => {
+        products.push({ ...doc.data(), id: doc.id });
+      });
 
-const QuoteManufacturer = ({ next }) => {
+      setManufacturers(products);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const setNextPage = () => {
     next();
-    console.log("press");
+  };
+  const setPrevPage = () => {
+    prev();
   };
   return (
     <div>
@@ -41,34 +51,63 @@ const QuoteManufacturer = ({ next }) => {
       <Row className="verticalGap" gutter={[24, 24]}>
         <Col xl={14} lg={14} md={24} className="gutter-row">
           <Row gutter={[16, 16]}>
-            {product.map((items) => {
-              return (
-                <Col
-                  className="gutter-row"
-                  xl={8}
-                  lg={8}
-                  md={12}
-                  sm={24}
-                  xs={24}
-                >
-                  <ManufacturerCard item={items} />
-                </Col>
-              );
-            })}
+            {manufacturers.length > 0 ? (
+              manufacturers.map((items) => {
+                return (
+                  <Col
+                    className="gutter-row"
+                    xl={8}
+                    lg={8}
+                    md={12}
+                    sm={24}
+                    xs={24}
+                  >
+                    <ManufacturerCard
+                      item={items}
+                      setImageLogo={setImageLogo}
+                      next={next}
+                    />
+                  </Col>
+                );
+              })
+            ) : (
+              <Spin />
+            )}
           </Row>
+          <div className="btnGap">
+            <Button
+              onClick={setPrevPage}
+              size="large"
+              type="primary"
+              htmlType="submit"
+              style={{
+                background: "#00818F",
+                color: "#ffff",
+                border: "1px solid #00818F",
+              }}
+            >
+              Back
+            </Button>
+
+            <Button
+              onClick={setNextPage}
+              size="large"
+              type="primary"
+              htmlType="submit"
+              style={{
+                background: "#00818F",
+                color: "#ffff",
+                border: "1px solid #00818F",
+              }}
+            >
+              Save
+            </Button>
+          </div>
         </Col>
         <Col xl={10} lg={10} md={24}>
           <CustomerDetailBox />
         </Col>
       </Row>
-      <div className="verticalGap" onClick={setNextPage}>
-        <AntButton
-          background="#00818F"
-          color="#ffff"
-          text="Save"
-          padding="0.7rem 5rem"
-        />
-      </div>
     </div>
   );
 };
