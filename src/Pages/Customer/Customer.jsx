@@ -12,36 +12,7 @@ import { notification } from "antd";
 const { Content } = Layout;
 
 const Customer = () => {
-  const [form1] = Form.useForm();
-
-  const [form, setForm] = useState({
-    accountManager: "",
-    firstName: "",
-    lastName: "",
-    emailAddress: "",
-    mobileNumber: "",
-    homeNumber: "",
-    addCustomerFirstName: "",
-    addCustomerLastName: "",
-    addCustomerEmailAddress: "",
-    addCustomerHomeNumber: "",
-    addCustomerMobileNumber: "",
-    companyName: "",
-    companyEmailAddress: "",
-    companyMobileNumber: "",
-    companyOfficeNumber: "",
-    homeAddress: "",
-    appartment: "",
-    zip: "",
-    city: "",
-    province: "",
-    notes: "",
-    hearAboutUs: "",
-  });
-
-  const setUserInfo = (userInfo, value) => {
-    setForm({ ...form, [value]: userInfo });
-  };
+  const [customerForm] = Form.useForm();
 
   const onFinish = async (values) => {
     // console.log("Success:", values);
@@ -68,49 +39,46 @@ const Customer = () => {
       city,
       hearAboutUs,
       notes,
-    } = form;
+    } = values;
     const userObj = {
       userDetails: {
-        accountManager,
-        firstName,
-        lastName,
-        emailAddress,
-        homeNumber,
-        mobileNumber,
+        accountManager: accountManager || "",
+        firstName: firstName || "",
+        lastName: lastName || "",
+        emailAddress: emailAddress || "",
+        homeNumber: homeNumber || "",
+        mobileNumber: mobileNumber || "",
       },
       aditionalCustomerDetails: {
-        addCustomerFirstName,
-        addCustomerLastName,
-        addCustomerEmailAddress,
-        addCustomerMobileNumber,
-        addCustomerHomeNumber,
+        addCustomerFirstName: addCustomerFirstName || "",
+        addCustomerLastName: addCustomerLastName || "",
+        addCustomerEmailAddress: addCustomerEmailAddress || "",
+        addCustomerMobileNumber: addCustomerMobileNumber || "",
+        addCustomerHomeNumber: addCustomerHomeNumber || "",
       },
       companyDetails: {
-        companyName,
-        companyEmailAddress,
-        companyMobileNumber,
-        companyOfficeNumber,
+        companyName: companyName || "",
+        companyEmailAddress: companyEmailAddress || "",
+        companyMobileNumber: companyMobileNumber || "",
+        companyOfficeNumber: companyOfficeNumber || "",
       },
       userAddress: {
-        homeAddress,
-        appartment,
-        zip,
-        province,
-        city,
+        homeAddress: homeAddress || "",
+        appartment: appartment || "",
+        zip: zip || "",
+        province: province || "",
+        city: city || "",
       },
-      customerFeedback: {
-        notes,
-        hearAboutUs,
-      },
+      customerFeedback: { notes: notes || "", hearAboutUs: hearAboutUs || "" },
     };
-    // console.log("before ", userObj);
+    console.log("success ", userObj);
     await firestore.collection("customer").add(userObj);
     openNotification(
       "bottomLeft",
       "Form submitted successfully.",
       "Form Submitted"
     );
-    form1.resetFields();
+    customerForm.resetFields();
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -151,11 +119,15 @@ const Customer = () => {
             color="#1D1C1C"
           />
         </div>
-        <Form form={form1} onFinish={onFinish} onFinishFailed={onFinishFailed}>
-          <PrimaryCustomer setUserInfo={setUserInfo} />
-          <AdditionalCustomer setUserInfo={setUserInfo} />
-          <AddCompany setUserInfo={setUserInfo} />
-          <BillingAddress setUserInfo={setUserInfo} />
+        <Form
+          form={customerForm}
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
+        >
+          <PrimaryCustomer />
+          <AdditionalCustomer />
+          <AddCompany />
+          <BillingAddress />
           <Button htmlType="submit" size="large">
             Submit
           </Button>

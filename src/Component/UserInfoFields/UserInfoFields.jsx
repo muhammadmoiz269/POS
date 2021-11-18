@@ -9,12 +9,7 @@ function onChange(e) {
   // console.log(`checked = ${e.target.checked}`);
 }
 
-const UserInfoFields = ({
-  isCompany,
-  setUserInfo,
-  isAdditionalUser,
-  requiredUser,
-}) => {
+const UserInfoFields = ({ isCompany, isAdditionalUser, requiredUser }) => {
   return (
     <div>
       {isCompany ? (
@@ -46,7 +41,6 @@ const UserInfoFields = ({
             placeholder={isCompany ? "Company Name" : "First Name"}
             regex={/^[a-zA-Z_ ]*$/}
             isRequired={requiredUser}
-            setUserInfo={setUserInfo}
             value={
               isAdditionalUser
                 ? "addCustomerFirstName"
@@ -71,7 +65,6 @@ const UserInfoFields = ({
               isRequired={requiredUser}
               regex={/^[A-Za-z]+$/}
               placeholder="Last Name"
-              setUserInfo={setUserInfo}
               value={isAdditionalUser ? "addCustomerLastName" : "lastName"}
             />
           </div>
@@ -88,7 +81,6 @@ const UserInfoFields = ({
           isRequired={requiredUser}
           regex={/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/}
           placeholder="Email Address"
-          setUserInfo={setUserInfo}
           value={
             isAdditionalUser
               ? "addCustomerEmailAddress"
@@ -109,7 +101,6 @@ const UserInfoFields = ({
           <AntInput
             regex={/^[0-9]+$/}
             placeholder="416-555-000"
-            setUserInfo={setUserInfo}
             value={
               isAdditionalUser
                 ? "addCustomerMobileNumber"
@@ -129,7 +120,6 @@ const UserInfoFields = ({
           <AntInput
             regex={/^[0-9]+$/}
             placeholder="555-416-000"
-            setUserInfo={setUserInfo}
             value={
               isAdditionalUser
                 ? "addCustomerHomeNumber"

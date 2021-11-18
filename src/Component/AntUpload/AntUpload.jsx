@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Upload, message } from "antd";
+import { Input, Form } from "antd";
+
 import "./AntUpload.css";
 
 function getBase64(img, callback) {
@@ -20,7 +22,7 @@ function beforeUpload(file) {
   return isLt2M;
 }
 
-const AntUpload = ({ setProductInfo, value }) => {
+const AntUpload = ({ value, imgName }) => {
   const [loading, setloading] = useState(false);
   const [image, setimage] = useState(false);
   const imageUrl = image;
@@ -40,7 +42,7 @@ const AntUpload = ({ setProductInfo, value }) => {
       );
     }
     console.log("image ", info.file.originFileObj);
-    setProductInfo(info.file.originFileObj, "productImage");
+    // setProductInfo(info.file.originFileObj, "productImage");
   };
   const uploadButton = (
     <div>
@@ -50,19 +52,21 @@ const AntUpload = ({ setProductInfo, value }) => {
   );
   return (
     <div>
-      <Upload
-        maxCount={1}
-        multiple={false}
-        name="avatar"
-        listType="picture-card"
-        // className="avatar-uploader"
-        showUploadList={true}
-        action="//jsonplaceholder.typicode.com/posts/"
-        beforeUpload={beforeUpload}
-        onChange={handleChange}
-      >
-        {imageUrl ? <img src={imageUrl} alt="avatar" /> : uploadButton}
-      </Upload>
+      <Form.Item name={imgName}>
+        <Upload
+          maxCount={1}
+          multiple={false}
+          name="avatar"
+          listType="picture-card"
+          // className="avatar-uploader"
+          showUploadList={true}
+          action="//jsonplaceholder.typicode.com/posts/"
+          beforeUpload={beforeUpload}
+          onChange={handleChange}
+        >
+          {imageUrl ? <img src={imageUrl} alt="avatar" /> : uploadButton}
+        </Upload>
+      </Form.Item>
     </div>
   );
 };
