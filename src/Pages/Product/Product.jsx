@@ -4,7 +4,6 @@ import AntType from "../../Component/AntTypo/AntType";
 import "./Product.css";
 import { Row, Col } from "antd";
 import { storage, firestore } from "./../../Firebase/Firebase";
-import firebase from "../../Firebase/Firebase";
 import ProductSampleForm from "../../Component/ProductSampleForm/ProductSampleForm";
 import ProductManufacturerSection from "../../Component/ProductManufacturerSection/ProductManufacturerSection";
 import { notification } from "antd";
@@ -15,20 +14,6 @@ const { Content } = Layout;
 const Product = () => {
   const [productForm] = Form.useForm();
 
-  // const [form, setForm] = useState({
-  //   manufacturer: "",
-  //   productImage: "",
-  //   species: "",
-  //   additionalSpecies: "",
-  //   color: "",
-  //   additionalColor: "",
-  //   sku: "",
-  //   retailPrice: "",
-  // });
-
-  // const setProductInfo = (userInfo, value) => {
-  //   setForm({ ...form, [value]: userInfo });
-  // };
   const onFinish = async (values) => {
     console.log("products", values.productImage.file.originFileObj);
     const {
@@ -145,16 +130,7 @@ const Product = () => {
           </Col>
           <Col className="productRightSection" xs={24} md={24} lg={14}>
             <ProductSampleForm />
-            <Button
-              size="large"
-              type="primary"
-              htmlType="submit"
-              style={{
-                background: "#00818F",
-                color: "#ffff",
-                border: "1px solid #00818F",
-              }}
-            >
+            <Button size="large" htmlType="submit">
               Add Sample
             </Button>
           </Col>

@@ -40,7 +40,12 @@ const ManufacturerMeasurement = ({ prev }) => {
                 fontWeight={true}
                 color="#004D8B"
               />
-              <AntInput placeholder="1200 sq ft" value="additionalColor" />
+              <AntInput
+                placeholder="1200 sq ft"
+                value="squareFootage"
+                regex={/^[0-9]+$/}
+                isRequired="true"
+              />
             </Col>
             <Col xl={10} lg={10} md={24}>
               <AntType
@@ -49,7 +54,12 @@ const ManufacturerMeasurement = ({ prev }) => {
                 fontWeight={true}
                 color="#004D8B"
               />
-              <AntInput placeholder="Basement" value="additionalColor" />
+              <AntInput
+                placeholder="Basement"
+                value="itemDescription"
+                regex={/^[a-zA-Z_ ]*$/}
+                isRequired="true"
+              />
             </Col>
             <Col xl={7} lg={7} md={24}>
               <AntType
@@ -58,7 +68,12 @@ const ManufacturerMeasurement = ({ prev }) => {
                 fontWeight={true}
                 color="#004D8B"
               />
-              <AntInput placeholder="120 sq ft" value="additionalColor" />
+              <AntInput
+                placeholder="120 sq ft"
+                value="cuttingWaste"
+                regex={/^[0-9]+$/}
+                isRequired="true"
+              />
             </Col>
           </Row>
           <Row>
@@ -81,29 +96,8 @@ const ManufacturerMeasurement = ({ prev }) => {
             />
           </Row>
           <div className="btnGap">
-            <Button
-              onClick={setPrevPage}
-              type="primary"
-              htmlType="submit"
-              style={{
-                background: "#00818F",
-                color: "#ffff",
-                border: "1px solid #00818F",
-              }}
-            >
-              Back
-            </Button>
-            <Button
-              type="primary"
-              htmlType="submit"
-              style={{
-                background: "#00818F",
-                color: "#ffff",
-                border: "1px solid #00818F",
-              }}
-            >
-              Save
-            </Button>
+            <Button onClick={setPrevPage}>Back</Button>
+            <Button htmlType="submit">Save</Button>
           </div>
         </Col>
         <Col xl={10} lg={10} md={24}>

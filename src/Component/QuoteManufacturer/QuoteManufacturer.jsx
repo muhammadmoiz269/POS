@@ -75,33 +75,9 @@ const QuoteManufacturer = ({ next, prev, setImageLogo }) => {
             )}
           </Row>
           <div className="btnGap">
-            <Button
-              onClick={setPrevPage}
-              size="large"
-              type="primary"
-              htmlType="submit"
-              style={{
-                background: "#00818F",
-                color: "#ffff",
-                border: "1px solid #00818F",
-              }}
-            >
-              Back
-            </Button>
+            <Button onClick={setPrevPage}>Back</Button>
 
-            <Button
-              onClick={setNextPage}
-              size="large"
-              type="primary"
-              htmlType="submit"
-              style={{
-                background: "#00818F",
-                color: "#ffff",
-                border: "1px solid #00818F",
-              }}
-            >
-              Save
-            </Button>
+            <Button onClick={setNextPage}>Save</Button>
           </div>
         </Col>
         <Col xl={10} lg={10} md={24}>

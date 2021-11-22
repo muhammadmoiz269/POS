@@ -20,7 +20,7 @@
   justify-content: end;
   padding-right: 2rem;
 }
-.imageAnimate {
+/* .imageAnimate {
   animation-name: move;
   animation-duration: 4s;
 }
@@ -33,4 +33,4 @@
     transform: translateX(0px);
     transform: translateY(0px);
   }
-}
+} */

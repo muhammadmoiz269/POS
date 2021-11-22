@@ -3,6 +3,8 @@ import { Collapse } from "antd";
 import AntType from "../AntTypo/AntType";
 import { PlusOutlined } from "@ant-design/icons";
 import { Radio } from "antd";
+import { Input, Form } from "antd";
+
 import "./AntAccordian.css";
 
 const { Panel } = Collapse;
@@ -11,17 +13,13 @@ function callback(key) {
   // console.log(key);
 }
 
-const text = `
-  A dog is a type of domesticated animal.
- 
-`;
-
 const AntAccordian = ({ items }) => {
   // console.log("items are ", items.radioItem);
   const [value, setValue] = React.useState(1);
 
-  const onChange = (e) => {
-    // console.log("radio checked", e.target.value);
+  const onChange = (e, name) => {
+    // console.log("radio checked", e.target);
+
     setValue(e.target.value);
   };
   return (
@@ -41,12 +39,17 @@ const AntAccordian = ({ items }) => {
         }
         key="1"
       >
-        {items.radioItem.map((items) => {
+        {items.radioItem.map((radioItems) => {
           return (
             <div>
-              <Radio.Group onChange={onChange} value={value}>
-                <Radio value={parseInt(items.value)}>{items.radio}</Radio>
-              </Radio.Group>
+              <Form.Item name={items.title}>
+                <Radio.Group
+                  onChange={(e) => onChange(e, items.title)}
+                  value={radioItems.radio}
+                >
+                  <Radio value={radioItems.radio}>{radioItems.radio}</Radio>
+                </Radio.Group>
+              </Form.Item>
             </div>
           );
         })}

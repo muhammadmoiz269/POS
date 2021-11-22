@@ -74,12 +74,16 @@ const productItems = [
   },
 ];
 
-const ManufacturerDetails = ({ next, prev }) => {
+const ManufacturerDetails = ({ next, prev, form, getFieldValues }) => {
   const setNextPage = () => {
+    getFieldValues();
     next();
   };
   const setPrevPage = () => {
     prev();
+  };
+  const clearFilter = () => {
+    form.resetFields();
   };
   return (
     <div>
@@ -88,43 +92,14 @@ const ManufacturerDetails = ({ next, prev }) => {
           {productItems.map((items) => {
             return <AntAccordian items={items} />;
           })}
-          <AntType
-            text="Clear all filters"
-            fontSize={5}
-            fontWeight={true}
-            color="#00818F"
-            margin="0rem 0.5em"
-          />
-          <div className="btnGap">
-            <Button
-              onClick={setPrevPage}
-              size="large"
-              type="primary"
-              htmlType="submit"
-              style={{
-                background: "#00818F",
-                color: "#ffff",
-                border: "1px solid #00818F",
-                padding: "0.5rem 1rem",
-              }}
-            >
-              Back
-            </Button>
+          <Button onClick={clearFilter} type="primary">
+            Clear all Filter
+          </Button>
 
-            <Button
-              onClick={setNextPage}
-              size="large"
-              type="primary"
-              htmlType="submit"
-              style={{
-                background: "#00818F",
-                color: "#ffff",
-                border: "1px solid #00818F",
-                padding: "0.5rem 1rem",
-              }}
-            >
-              Save
-            </Button>
+          <div className="btnGap">
+            <Button onClick={setPrevPage}>Back</Button>
+
+            <Button onClick={setNextPage}>Save</Button>
           </div>
         </Col>
         <Col xl={10} lg={10} md={24}>

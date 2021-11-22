@@ -1,5 +1,6 @@
-.flex2 {
+.navbarSelect {
   display: flex;
+  align-items: baseline;
   justify-content: space-between;
   padding: 0 1rem;
 }

@@ -11,7 +11,7 @@ import ProfileCard from "../ProfileCard/ProfileCard";
 const Navbar = () => {
   return (
     <Row style={{ width: "100%" }}>
-      <Col className="flex2" span={20}>
+      <Col className="navbarSelect" span={20}>
         <AntSelect placeholder="Search" onNav="true" />
 
         <Navbarinfo />

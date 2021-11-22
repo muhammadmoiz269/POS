@@ -67,7 +67,11 @@ const AddMeasurement = ({
                     color="#004D8B"
                   />
                 )}
-                <AntInput placeholder="1200 sq ft" value="additionalColor" />
+                <AntInput
+                  placeholder="1200 sq ft"
+                  value={isAddAnother ? "addSqFt" : "length"}
+                  regex={/^[0-9]+$/}
+                />
               </Col>
               <Col xl={col2} lg={col2} md={24}>
                 {isAddAnother ? (
@@ -80,7 +84,11 @@ const AddMeasurement = ({
                     color="#004D8B"
                   />
                 )}
-                <AntInput placeholder="Basement" value="additionalColor" />
+                <AntInput
+                  placeholder="Basement"
+                  value={isAddAnother ? "addDescription" : "width"}
+                  regex={isAddAnother ? /^[a-zA-Z_ ]*$/ : /^[0-9]+$/}
+                />
               </Col>
               {isAddAnother ? (
                 <div
