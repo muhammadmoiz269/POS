@@ -8,7 +8,7 @@ import Paragraph from "../Paragraph/Paragraph";
 import { Input, Form } from "antd";
 
 import "./ProductManufacturerSection.css";
-const ProductManufacturerSection = ({ setProductInfo }) => {
+const ProductManufacturerSection = () => {
   return (
     <div>
       <div className="nameFields">
@@ -22,14 +22,11 @@ const ProductManufacturerSection = ({ setProductInfo }) => {
           <AntInput
             regex={/^[a-zA-Z_ ]*$/}
             placeholder="manufacturer"
-            setProductInfo={setProductInfo}
             value="manufacturer"
           />
 
           <div className="uploadImage">
-            <Form.Item name="upload">
-              <AntUpload setProductInfo={setProductInfo} value="productImage" />
-            </Form.Item>
+            <AntUpload imgName="productImage" />
 
             <div>
               <AntType

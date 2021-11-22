@@ -9,10 +9,10 @@ import { Input, Form } from "antd";
 
 const { TextArea } = Input;
 function onChange(e) {
-  console.log(`checked = ${e.target.checked}`);
+  // console.log(`checked = ${e.target.checked}`);
 }
 
-const BillingAddress = ({ setUserInfo }) => {
+const BillingAddress = () => {
   return (
     <div className="billingSection">
       <div>
@@ -36,11 +36,7 @@ const BillingAddress = ({ setUserInfo }) => {
             fontWeight={true}
             color="#1D1C1C"
           />
-          <AntInput
-            placeholder="10 brown street"
-            setUserInfo={setUserInfo}
-            value="homeAddress"
-          />
+          <AntInput placeholder="10 brown street" value="homeAddress" />
         </div>
       </div>
       <div className="names">
@@ -50,11 +46,7 @@ const BillingAddress = ({ setUserInfo }) => {
           fontWeight={true}
           color="#1D1C1C"
         />
-        <AntInput
-          placeholder="Suite No 302"
-          setUserInfo={setUserInfo}
-          value="appartment"
-        />
+        <AntInput placeholder="Suite No 302" value="appartment" />
       </div>
       <div className="nameFields">
         <div className="zip">
@@ -64,19 +56,13 @@ const BillingAddress = ({ setUserInfo }) => {
             fontWeight={true}
             color="#1D1C1C"
           />
-          <AntInput
-            regex={/^[0-9]+$/}
-            placeholder="416-555-000"
-            setUserInfo={setUserInfo}
-            value="zip"
-          />
+          <AntInput regex={/^[0-9]+$/} placeholder="416-555-000" value="zip" />
         </div>
         <div className="city">
           <AntType text="City" fontSize={5} fontWeight={true} color="#1D1C1C" />
           <AntInput
             regex={/^[a-zA-Z_ ]*$/}
             placeholder="karachi"
-            setUserInfo={setUserInfo}
             value="city"
           />
         </div>
@@ -90,7 +76,6 @@ const BillingAddress = ({ setUserInfo }) => {
           <AntInput
             regex={/^[a-zA-Z_ ]*$/}
             placeholder="Sindh"
-            setUserInfo={setUserInfo}
             value="province"
           />
         </div>
@@ -103,13 +88,8 @@ const BillingAddress = ({ setUserInfo }) => {
             fontWeight={true}
             color="#1D1C1C"
           />
-          <Form.Item name="hearAboutUs">
-            <AntSelect
-              placeholder="Make a Selection"
-              setUserInfo={setUserInfo}
-              valueName="hearAboutUs"
-            />
-          </Form.Item>
+
+          <AntSelect placeholder="Make a Selection" valueName="hearAboutUs" />
         </div>
       </div>
       <div className="nameFields">
@@ -123,10 +103,7 @@ const BillingAddress = ({ setUserInfo }) => {
 
           {/* name property in Form.Item is a unique identifier yahan pe notes denoted kr rha hy meri text area ko   */}
           <Form.Item name="notes">
-            <TextArea
-              rows={6}
-              onChange={(e) => setUserInfo(e.target.value, "notes")}
-            />
+            <TextArea rows={6} />
           </Form.Item>
         </div>
       </div>

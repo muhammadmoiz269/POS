@@ -7,7 +7,7 @@ import { Input, Form } from "antd";
 
 import "./PrimaryCustomer.css";
 
-const PrimaryCustomer = ({ setUserInfo }) => {
+const PrimaryCustomer = () => {
   return (
     <div>
       <AntType
@@ -23,13 +23,7 @@ const PrimaryCustomer = ({ setUserInfo }) => {
           fontWeight={true}
           color="#1D1C1C"
         />
-        <Form.Item name="accountManager">
-          <AntSelect
-            placeholder="Make a Selection"
-            setUserInfo={setUserInfo}
-            valueName="accountManager"
-          />
-        </Form.Item>
+        <AntSelect placeholder="Make a Selection" valueName="accountManager" />
       </div>
       <div>
         <AntType
@@ -38,7 +32,7 @@ const PrimaryCustomer = ({ setUserInfo }) => {
           fontWeight={true}
           color="#1D1C1C"
         />
-        <UserInfoFields setUserInfo={setUserInfo} requiredUser="true" />
+        <UserInfoFields requiredUser="true" />
       </div>
     </div>
   );

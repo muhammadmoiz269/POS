@@ -1,9 +1,10 @@
 import React from "react";
 import { Image } from "antd";
-const Antimage = ({ img }) => {
+const Antimage = ({ img, height, width }) => {
   return (
     <div>
-      <img src={img} height="40px" width="70px" alt="" />
+      {/* <Image width={100} height={70} src={img} preview={false} /> */}
+      <img src={img} height={height} width={width} alt="" />
     </div>
   );
 };

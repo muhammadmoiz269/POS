@@ -7,7 +7,7 @@ const AntInput = ({
   isRequired,
   value,
   regex,
-  setUserInfo,
+
   setProductInfo,
 }) => {
   return (
@@ -26,19 +26,7 @@ const AntInput = ({
           },
         ]}
       >
-        <Input
-          placeholder={placeholder}
-          size="middle"
-          onChange={(e) =>
-            setUserInfo ? (
-              setUserInfo(e.target.value, value)
-            ) : setProductInfo ? (
-              setProductInfo(e.target.value, value)
-            ) : (
-              <></>
-            )
-          }
-        />
+        <Input placeholder={placeholder} size="middle" />
       </Form.Item>
     </div>
   );

@@ -1,8 +1,7 @@
 import React from "react";
 import { Menu } from "antd";
 import { Typography } from "antd";
-
-// import Comments from "../Comment/comment";
+import { Link } from "react-router-dom";
 import "./Menubar.css";
 
 import {
@@ -11,9 +10,7 @@ import {
   UserOutlined,
   CalendarOutlined,
   OrderedListOutlined,
-  StarOutlined,
   LeftOutlined,
-  RightOutlined,
   CopyOutlined,
   FolderOpenOutlined,
   SnippetsOutlined,
@@ -50,7 +47,7 @@ const Menubar = ({ showDrawer, onClose, visible }) => {
         </div>
 
         <Menu.Item key="1" icon={<AppstoreOutlined className="icon" />}>
-          Dashboard
+          <Link to="/">Dashboard</Link>
         </Menu.Item>
         <Menu.Item key="2" icon={<CalendarOutlined className="icon" />}>
           Calendar
@@ -63,7 +60,9 @@ const Menubar = ({ showDrawer, onClose, visible }) => {
           icon={<UserOutlined className="icon" />}
           title="Customers"
         >
-          <Menu.Item key="4">Add Customer</Menu.Item>
+          <Menu.Item key="4">
+            <Link to="/customer">Add Customer</Link>
+          </Menu.Item>
           <Menu.Item key="5">View List</Menu.Item>
         </SubMenu>
         <SubMenu
@@ -71,7 +70,9 @@ const Menubar = ({ showDrawer, onClose, visible }) => {
           icon={<CopyOutlined className="icon" />}
           title="Quotes"
         >
-          <Menu.Item key="6">Build a Quote</Menu.Item>
+          <Menu.Item key="6">
+            <Link to="/quote">Build a Quote</Link>
+          </Menu.Item>
           <Menu.Item key="7">View all Quote</Menu.Item>
         </SubMenu>
         <Menu.Item key="8" icon={<FolderOpenOutlined className="icon" />}>
@@ -90,7 +91,7 @@ const Menubar = ({ showDrawer, onClose, visible }) => {
           style={{ marginTop: "1.5rem" }}
           className="bottonMenu"
         >
-          Products
+          <Link to="/product">Products</Link>
         </Menu.Item>
 
         <SubMenu

@@ -6,7 +6,7 @@ import AntType from "../AntTypo/AntType";
 import "./ProductSampleForm.css";
 import { Input, Form } from "antd";
 
-const ProductSampleForm = ({ setProductInfo }) => {
+const ProductSampleForm = () => {
   return (
     <div className="productFields">
       <div>
@@ -16,18 +16,11 @@ const ProductSampleForm = ({ setProductInfo }) => {
           fontWeight={true}
           color="#1D1C1C"
         />
-        <Form.Item name="accountManager">
-          <AntSelect
-            placeholder="Make a Selection"
-            setProductInfo={setProductInfo}
-            valueName="species"
-          />
-        </Form.Item>
+
+        <AntSelect placeholder="Make a Selection" valueName="species" />
+
         <div>
-          <AdditionalCustomer
-            isProduct="true"
-            setProductInfo={setProductInfo}
-          />
+          <AdditionalCustomer isProduct="true" />
         </div>
         <div className="forSpacing">
           <AntType
@@ -36,19 +29,11 @@ const ProductSampleForm = ({ setProductInfo }) => {
             fontWeight={true}
             color="#1D1C1C"
           />
-          <AntInput
-            regex={/^[a-zA-Z_ ]*$/}
-            placeholder="Blue"
-            setProductInfo={setProductInfo}
-            value="color"
-          />
+          <AntInput regex={/^[a-zA-Z_ ]*$/} placeholder="Blue" value="color" />
         </div>
 
         <div>
-          <AdditionalCustomer
-            isProduct="true"
-            setProductInfo={setProductInfo}
-          />
+          <AdditionalCustomer isProduct="true" />
         </div>
 
         <div className="forSpacing">
@@ -58,12 +43,7 @@ const ProductSampleForm = ({ setProductInfo }) => {
             fontWeight={true}
             color="#1D1C1C"
           />
-          <AntInput
-            regex={/^[0-9]+$/}
-            placeholder="000000000"
-            setProductInfo={setProductInfo}
-            value="sku"
-          />
+          <AntInput regex={/^[0-9]+$/} placeholder="000000000" value="sku" />
         </div>
         <div className="forSpacing">
           <AntType
@@ -75,7 +55,6 @@ const ProductSampleForm = ({ setProductInfo }) => {
           <AntInput
             regex={/^[0-9]+$/}
             placeholder="$ 100"
-            setProductInfo={setProductInfo}
             value="retailPrice"
           />
         </div>
