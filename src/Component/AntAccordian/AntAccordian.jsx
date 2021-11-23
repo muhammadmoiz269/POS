@@ -9,17 +9,13 @@ import "./AntAccordian.css";
 
 const { Panel } = Collapse;
 
-function callback(key) {
-  // console.log(key);
-}
+function callback(key) {}
 
 const AntAccordian = ({ items }) => {
-  // console.log("items are ", items.radioItem);
   const [value, setValue] = React.useState(1);
 
   const onChange = (e, name) => {
-    // console.log("radio checked", e.target);
-
+    console.log(e);
     setValue(e.target.value);
   };
   return (
@@ -46,6 +42,7 @@ const AntAccordian = ({ items }) => {
                 <Radio.Group
                   onChange={(e) => onChange(e, items.title)}
                   value={radioItems.radio}
+                  name={items.title}
                 >
                   <Radio value={radioItems.radio}>{radioItems.radio}</Radio>
                 </Radio.Group>

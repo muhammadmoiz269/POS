@@ -63,7 +63,9 @@ const Menubar = ({ showDrawer, onClose, visible }) => {
           <Menu.Item key="4">
             <Link to="/customer">Add Customer</Link>
           </Menu.Item>
-          <Menu.Item key="5">View List</Menu.Item>
+          <Menu.Item key="5">
+            <Link to="/viewlist">View List</Link>
+          </Menu.Item>
         </SubMenu>
         <SubMenu
           key="sub3"

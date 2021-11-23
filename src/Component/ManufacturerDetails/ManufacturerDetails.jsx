@@ -74,7 +74,13 @@ const productItems = [
   },
 ];
 
-const ManufacturerDetails = ({ next, prev, form, getFieldValues }) => {
+const ManufacturerDetails = ({
+  next,
+  prev,
+  form,
+  getFieldValues,
+  resetField,
+}) => {
   const setNextPage = () => {
     getFieldValues();
     next();
@@ -84,6 +90,7 @@ const ManufacturerDetails = ({ next, prev, form, getFieldValues }) => {
   };
   const clearFilter = () => {
     form.resetFields();
+    resetField();
   };
   return (
     <div>

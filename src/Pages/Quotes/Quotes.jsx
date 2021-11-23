@@ -22,8 +22,8 @@ const Quotes = () => {
 
   const onFinish = async (valuess) => {
     const quoteObj = {
-      manufactureDetails: data.manufactureDetails || "",
-      manufactureMeasurement: valuess || "",
+      manufactureDetails: data.manufactureDetails,
+      manufactureMeasurement: valuess,
     };
 
     await firestore.collection("quotes").add(quoteObj);
@@ -38,6 +38,10 @@ const Quotes = () => {
 
   const getFieldValues = () => {
     setdata({ manufactureDetails: quotesForm.getFieldsValue() });
+    console.log("*******", data);
+  };
+  const resetField = () => {
+    setdata(null);
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -106,6 +110,7 @@ const Quotes = () => {
           prev={prev}
           form={quotesForm}
           getFieldValues={getFieldValues}
+          resetField={resetField}
         />
       ),
     },
