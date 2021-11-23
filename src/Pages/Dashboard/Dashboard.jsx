@@ -10,7 +10,6 @@ import { firestore } from "../../Firebase/Firebase";
 const { Content } = Layout;
 
 const Dashboard = () => {
-  console.log("*****", firestore);
   return (
     <div>
       <Content className="dashboardContent">

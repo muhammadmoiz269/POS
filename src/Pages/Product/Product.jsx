@@ -7,48 +7,44 @@ import { storage, firestore } from "./../../Firebase/Firebase";
 import ProductSampleForm from "../../Component/ProductSampleForm/ProductSampleForm";
 import ProductManufacturerSection from "../../Component/ProductManufacturerSection/ProductManufacturerSection";
 import { notification } from "antd";
+import { v4 as uuid } from "uuid";
 
 const { Content } = Layout;
 
 const Product = () => {
-  const [form1] = Form.useForm();
+  const [productForm] = Form.useForm();
 
-  const [form, setForm] = useState({
-    manufacturer: "",
-    productImage: "",
-    species: "",
-    additionalSpecies: "",
-    color: "",
-    additionalColor: "",
-    sku: "",
-    retailPrice: "",
-  });
-
-  const setProductInfo = (userInfo, value) => {
-    setForm({ ...form, [value]: userInfo });
-  };
   const onFinish = async (values) => {
-    console.log("Success:", values);
+    console.log("products", values.productImage.file.originFileObj);
     const {
       manufacturer,
-      productImage,
+      productImage: {
+        file: { originFileObj },
+      },
       species,
       additionalSpecies,
       color,
       additionalColor,
       sku,
       retailPrice,
-    } = form;
+    } = values;
+    console.log("file is", originFileObj);
 
-    var imageRef = storage.child(`products/img-1}`);
-    var fileListener = imageRef.put(productImage);
+    var imageRef = storage.child(`products/${uuid()}`);
+    var fileListener = imageRef.put(originFileObj, {
+      contentType: `${originFileObj.type}`,
+      firebaseStorageDownloadTokens: uuid(),
+    });
+    // console.log("product image is", productImage);
 
     //file listener takes 4 argumnets
     //fileListener.on(event type, cb file state, cb error, cd will trigger after file upload)
     fileListener.on(
       "state_changed",
-      (snapshot) => {
-        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      async (snapshot) => {
+        console.log("********", snapshot);
+        var progress =
+          (await (snapshot.bytesTransferred / snapshot.totalBytes)) * 100;
         console.log("Upload is " + progress + " % done");
       },
       (error) => {
@@ -61,14 +57,14 @@ const Product = () => {
         //modify productObj with coverPhoto URL and created At
         const userObj = {
           productDetails: {
-            manufacturer,
+            manufacturer: manufacturer || "",
             productImage: downloadURL,
-            species,
-            additionalSpecies,
-            color,
-            additionalColor,
-            sku,
-            retailPrice,
+            species: species || "",
+            additionalSpecies: additionalSpecies || "",
+            color: color || "",
+            additionalColor: additionalColor || "",
+            sku: sku || "",
+            retailPrice: retailPrice || "",
           },
         };
 
@@ -81,7 +77,7 @@ const Product = () => {
           "Form submitted successfully.",
           "Form Submitted"
         );
-        form1.resetFields();
+        productForm.resetFields();
       }
     );
   };
@@ -123,23 +119,18 @@ const Product = () => {
         />
       </div>
 
-      <Form form={form1} onFinish={onFinish} onFinishFailed={onFinishFailed}>
+      <Form
+        form={productForm}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+      >
         <Row>
           <Col className="productLeftSection" xs={24} md={24} lg={10}>
-            <ProductManufacturerSection setProductInfo={setProductInfo} />
+            <ProductManufacturerSection />
           </Col>
           <Col className="productRightSection" xs={24} md={24} lg={14}>
-            <ProductSampleForm setProductInfo={setProductInfo} />
-            <Button
-              size="large"
-              type="primary"
-              htmlType="submit"
-              style={{
-                background: "#00818F",
-                color: "#ffff",
-                border: "1px solid #00818F",
-              }}
-            >
+            <ProductSampleForm />
+            <Button size="large" htmlType="submit">
               Add Sample
             </Button>
           </Col>

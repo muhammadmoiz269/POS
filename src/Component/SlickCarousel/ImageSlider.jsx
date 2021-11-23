@@ -60,7 +60,7 @@ const product = [
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
-  console.log("trig", props);
+
   return (
     <div
       onClick={onClick}

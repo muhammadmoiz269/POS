@@ -11,9 +11,16 @@ const AntType = ({
   align,
   margin,
   icon,
+  justifyContent,
 }) => {
   return (
-    <div style={{ textAlign: align, display: "flex" }}>
+    <div
+      style={{
+        textAlign: align,
+        display: "flex",
+        justifyContent: justifyContent ? justifyContent : "",
+      }}
+    >
       <div>
         <Title
           level={fontSize}

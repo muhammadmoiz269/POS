@@ -11,13 +11,13 @@ import ProfileCard from "../ProfileCard/ProfileCard";
 const Navbar = () => {
   return (
     <Row style={{ width: "100%" }}>
-      <Col className="flex2" span={20}>
-        <AntSelect placeholder="Search" />
+      <Col className="navbarSelect" span={20}>
+        <AntSelect placeholder="Search" onNav="true" />
 
         <Navbarinfo />
       </Col>
       <Col span={4} className="navBarImage">
-        <Antimage img={HomeImg} />
+        <Antimage img={HomeImg} height="50px" width="70px" />
       </Col>
     </Row>
   );
