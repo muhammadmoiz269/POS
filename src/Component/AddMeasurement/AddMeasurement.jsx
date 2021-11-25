@@ -1,18 +1,9 @@
 import { Col, Row } from "antd";
 import React, { useState } from "react";
-import AntButton from "../AntButton/AntButton";
 import AntType from "../AntTypo/AntType";
-import CustomerDetailBox from "../CustomerDetailBox/CustomerDetailBox";
-
 import AntInput from "../AntInput/AntInput";
 import { Collapse } from "antd";
-import {
-  DownOutlined,
-  UpOutlined,
-  PlusOutlined,
-  MinusOutlined,
-  DeleteOutlined,
-} from "@ant-design/icons";
+import { DeleteOutlined } from "@ant-design/icons";
 
 const { Panel } = Collapse;
 
@@ -25,12 +16,14 @@ const AddMeasurement = ({
   isAddAnother,
 }) => {
   const [iconVisible, seticonVisible] = useState(["1"]);
+
   const onChange = (e) => {
     // console.log("radio checked", e.target.value);
   };
   function callback(key) {
     seticonVisible(key);
   }
+
   return (
     <Collapse defaultActiveKey={["0"]} onChange={callback}>
       <Panel

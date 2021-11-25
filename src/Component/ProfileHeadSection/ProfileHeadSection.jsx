@@ -1,16 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import AntType from "../AntTypo/AntType";
 import "./ProfileHeadSection.css";
 import { DownOutlined, UpOutlined, LogoutOutlined } from "@ant-design/icons";
 import ProfileCard from "../ProfileCard/ProfileCard";
 import SettingsPopover from "../SettingsPopover/SettingsPopover";
+import Child from "../Child/Child";
+import { userContext } from "../../Pages/Profile/Profile";
 
-const ProfileHeadSection = () => {
+const ProfileHeadSection = ({ data }) => {
   const [visible, setvisible] = useState(false);
+  const [count, setCount] = useState(0);
+  const user = useContext(userContext);
 
   const isTrigger = () => {
     setvisible(true);
   };
+
+  useEffect(() => {
+    console.log("Data passed from parent to child", data);
+  }, [data]);
+
+  useEffect(() => {
+    return () => {
+      console.log("Child Punch Out");
+    };
+  }, []);
 
   return (
     <div style={{ borderBottom: "1px solid #DCDCDC", padding: "1rem 0rem" }}>
@@ -57,6 +71,15 @@ const ProfileHeadSection = () => {
           margin="0rem 1rem"
         />
       </div>
+      <h1>Count is {user}</h1>
+      <button
+        onClick={() => {
+          setCount(count + 1);
+        }}
+      >
+        Add
+      </button>
+      <Child />
     </div>
   );
 };

@@ -21,9 +21,27 @@ const Quotes = () => {
   const [quotesForm] = Form.useForm();
 
   const onFinish = async (valuess) => {
+    const _manufactureDetails = Object.entries(data.manufactureDetails).reduce(
+      (acc, curr) => {
+        const [key, value] = curr;
+        if (value) acc[key] = value;
+        return acc;
+      },
+      {}
+    );
+    const _manufactureMeasurement = Object.entries(valuess).reduce(
+      (acc, curr) => {
+        const [key, value] = curr;
+        if (value) acc[key] = value;
+        return acc;
+      },
+      {}
+    );
+    console.log({ _manufactureDetails });
+
     const quoteObj = {
-      manufactureDetails: data.manufactureDetails,
-      manufactureMeasurement: valuess,
+      manufactureDetails: _manufactureDetails,
+      manufactureMeasurement: _manufactureMeasurement,
     };
 
     await firestore.collection("quotes").add(quoteObj);
@@ -38,10 +56,11 @@ const Quotes = () => {
 
   const getFieldValues = () => {
     setdata({ manufactureDetails: quotesForm.getFieldsValue() });
-    console.log("*******", data);
+    // console.log("*******", data);
   };
   const resetField = () => {
     setdata(null);
+    quotesForm.resetFields();
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -52,10 +71,6 @@ const Quotes = () => {
       "Field Error"
     );
   };
-
-  useEffect(() => {
-    console.log("here is", data);
-  }, [data]);
 
   const openNotification = (placement, text, status) => {
     if (status === "Field Error") {

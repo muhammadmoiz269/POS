@@ -15,7 +15,6 @@ const AntAccordian = ({ items }) => {
   const [value, setValue] = React.useState(1);
 
   const onChange = (e, name) => {
-    console.log(e);
     setValue(e.target.value);
   };
   return (

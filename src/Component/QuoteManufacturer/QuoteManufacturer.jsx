@@ -4,8 +4,7 @@ import { Row, Col, Button } from "antd";
 import ManufacturerCard from "../ManufacturerCard/ManufacturerCard";
 import AntButton from "../AntButton/AntButton";
 import "./QuoteManufacturer.css";
-
-import { Spin } from "antd";
+import { Skeleton } from "antd";
 
 import { firestore } from "./../../Firebase/Firebase";
 
@@ -71,7 +70,7 @@ const QuoteManufacturer = ({ next, prev, setImageLogo }) => {
                 );
               })
             ) : (
-              <Spin />
+              <Skeleton active />
             )}
           </Row>
           <div className="btnGap">

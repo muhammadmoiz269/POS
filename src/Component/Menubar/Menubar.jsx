@@ -78,7 +78,7 @@ const Menubar = ({ showDrawer, onClose, visible }) => {
           <Menu.Item key="7">View all Quote</Menu.Item>
         </SubMenu>
         <Menu.Item key="8" icon={<FolderOpenOutlined className="icon" />}>
-          Orders
+          <Link to="/profile">Orders</Link>
         </Menu.Item>
         <Menu.Item key="9" icon={<SnippetsOutlined className="icon" />}>
           Invoices

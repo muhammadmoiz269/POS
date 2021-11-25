@@ -30,7 +30,8 @@ const AntType = ({
           {text}
         </Title>
       </div>
-      <div>{icon}</div>
+
+      <div style={{ marginLeft: "1rem", color: "#C95B1D" }}>{icon}</div>
     </div>
   );
 };

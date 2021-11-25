@@ -15,6 +15,7 @@ import {
   MinusOutlined,
 } from "@ant-design/icons";
 import AddMeasurement from "../AddMeasurement/AddMeasurement";
+import AdditionalMeasurement from "../AdditionalMeasurement/AdditionalMeasurement";
 
 const ManufacturerMeasurement = ({ prev }) => {
   const setPrevPage = () => {
@@ -86,14 +87,7 @@ const ManufacturerMeasurement = ({ prev }) => {
             />
           </Row>
           <Row>
-            <AddMeasurement
-              text="Add another measurement"
-              upIcon={<PlusOutlined />}
-              downIcon={<MinusOutlined />}
-              col1={8}
-              col2={14}
-              isAddAnother="true"
-            />
+            <AdditionalMeasurement text="Add another measurement" />
           </Row>
           <div className="btnGap">
             <Button onClick={setPrevPage}>Back</Button>
